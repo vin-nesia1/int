@@ -11,6 +11,7 @@
     <meta name="author" content="Pet Wallpaper Paradise">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://catdog.vinnesia.my.id" />
+    
     <!-- Open Graph Tags -->
     <meta property="og:title" content="Pet Wallpaper Paradise - Free HD Cat & Dog Wallpapers">
     <meta property="og:description" content="Download 10,000+ FREE HD pet wallpapers! Cute cats, dogs, puppies in 4K quality. Perfect for desktop & mobile!">
@@ -51,6 +52,8 @@
             --radius: 16px;
             --radius-sm: 8px;
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --focus-color: #0066cc;
+            --focus-shadow: 0 0 0 3px rgba(0, 102, 204, 0.3);
         }
         
         html {
@@ -64,6 +67,35 @@
             background: var(--bg);
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+        }
+        
+        /* Enhanced Focus Styles for Accessibility */
+        *:focus {
+            outline: 3px solid var(--focus-color);
+            outline-offset: 2px;
+        }
+        
+        .focus-visible:focus {
+            outline: 3px solid var(--focus-color);
+            outline-offset: 2px;
+        }
+        
+        /* Skip Link */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 6px;
+            background: var(--focus-color);
+            color: white;
+            padding: 8px;
+            z-index: 10001;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+        
+        .skip-link:focus {
+            top: 6px;
         }
         
         /* Header & Navigation */
@@ -102,6 +134,10 @@
             font-size: 1.5rem;
         }
         
+        .logo:focus {
+            border-radius: var(--radius-sm);
+        }
+        
         .logo-icon {
             width: 48px;
             height: 48px;
@@ -125,6 +161,8 @@
             display: flex;
             gap: 2rem;
             list-style: none;
+            margin: 0;
+            padding: 0;
         }
         
         .nav a {
@@ -134,6 +172,7 @@
             padding: 0.75rem 1.5rem;
             border-radius: var(--radius-sm);
             transition: var(--transition);
+            display: block;
         }
         
         .nav a:hover, .nav a.active {
@@ -146,10 +185,18 @@
         .mobile-menu {
             display: none;
             background: none;
-            border: none;
+            border: 2px solid var(--text);
             font-size: 1.5rem;
             cursor: pointer;
             color: var(--text);
+            padding: 0.5rem;
+            border-radius: var(--radius-sm);
+            min-width: 44px;
+            min-height: 44px;
+        }
+        
+        .mobile-menu:focus {
+            border-color: var(--focus-color);
         }
         
         /* Hero Section */
@@ -258,6 +305,8 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            min-height: 44px;
+            font-size: 1rem;
         }
         
         .filter-btn:hover, .filter-btn.active {
@@ -280,12 +329,13 @@
             border-radius: var(--radius);
             font-size: 1rem;
             transition: var(--transition);
+            min-height: 44px;
         }
         
         .search-input:focus {
-            outline: none;
-            border-color: #FF6B6B;
-            box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.1);
+            outline: 3px solid var(--focus-color);
+            outline-offset: 2px;
+            border-color: var(--focus-color);
         }
         
         .search-icon {
@@ -294,6 +344,8 @@
             top: 50%;
             transform: translateY(-50%);
             color: var(--text-light);
+            font-size: 1.2rem;
+            pointer-events: none;
         }
         
         /* Main Content */
@@ -333,7 +385,6 @@
             box-shadow: var(--shadow);
             transition: var(--transition);
             position: relative;
-            cursor: pointer;
         }
         
         .wallpaper-card:hover {
@@ -352,6 +403,12 @@
             height: 100%;
             object-fit: cover;
             transition: var(--transition);
+            cursor: pointer;
+        }
+        
+        .wallpaper-image img:focus {
+            outline: 3px solid var(--focus-color);
+            outline-offset: -3px;
         }
         
         .wallpaper-card:hover .wallpaper-image img {
@@ -421,6 +478,13 @@
             font-size: 0.9rem;
             position: relative;
             overflow: hidden;
+            min-height: 44px;
+            min-width: 44px;
+        }
+        
+        .btn:focus {
+            outline: 3px solid var(--focus-color);
+            outline-offset: 2px;
         }
         
         .btn-primary {
@@ -511,6 +575,7 @@
             font-weight: 600;
             transition: var(--transition);
             box-shadow: var(--shadow);
+            min-height: 44px;
         }
         
         .load-more-btn:hover {
@@ -575,17 +640,25 @@
             background: rgba(255,255,255,0.2);
             color: var(--white);
             border: none;
-            width: 40px;
-            height: 40px;
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
             cursor: pointer;
             font-size: 1.5rem;
             backdrop-filter: blur(10px);
             transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
         .modal-close:hover {
             background: rgba(255,255,255,0.3);
+        }
+        
+        .modal-close:focus {
+            outline: 3px solid var(--white);
+            outline-offset: 2px;
         }
         
         .modal-actions {
@@ -632,6 +705,16 @@
             transition: var(--transition);
             cursor: pointer;
             font-size: 0.9rem;
+            min-height: 44px;
+            border: none;
+            background: none;
+            width: 100%;
+            text-align: left;
+        }
+        
+        .share-option:focus {
+            outline: 3px solid var(--focus-color);
+            outline-offset: 2px;
         }
         
         .share-option:hover {
@@ -671,16 +754,27 @@
             justify-content: center;
             gap: 2rem;
             margin-bottom: 2rem;
+            list-style: none;
+            padding: 0;
         }
         
         .footer-links a {
             color: rgba(255,255,255,0.8);
             text-decoration: none;
             transition: var(--transition);
+            padding: 0.5rem;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
         }
         
         .footer-links a:hover {
             color: var(--white);
+        }
+        
+        .footer-links a:focus {
+            outline: 3px solid var(--white);
+            outline-offset: 2px;
         }
         
         /* Notifications */
@@ -713,10 +807,20 @@
             cursor: pointer;
             opacity: 0.8;
             transition: opacity 0.2s;
+            min-width: 44px;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
         .notification button:hover {
             opacity: 1;
+        }
+        
+        .notification button:focus {
+            outline: 2px solid white;
+            outline-offset: 2px;
         }
         
         @keyframes slideInRight {
@@ -728,6 +832,15 @@
                 opacity: 1;
                 transform: translateX(0);
             }
+        }
+        
+        /* Live Region for Screen Reader Announcements */
+        .sr-live {
+            position: absolute;
+            left: -10000px;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
         }
         
         /* Responsive Design */
@@ -757,15 +870,32 @@
                 padding: 1rem;
                 box-shadow: var(--shadow);
                 border-top: 1px solid rgba(0,0,0,0.05);
+                max-height: 80vh;
+                overflow-y: auto;
+                z-index: 1001;
             }
             
             .nav.active {
                 display: flex;
             }
             
+            .nav li {
+                width: 100%;
+                margin: 0;
+            }
+            
             .nav a {
-                padding: 1rem;
+                padding: 1rem 1.5rem;
                 border-radius: var(--radius-sm);
+                width: 100%;
+                text-align: left;
+                border-bottom: 1px solid rgba(0,0,0,0.05);
+                margin-bottom: 0.5rem;
+            }
+            
+            .nav a:last-child {
+                border-bottom: none;
+                margin-bottom: 0;
             }
             
             .hero {
@@ -817,6 +947,11 @@
                 flex-direction: column;
                 gap: 0.5rem;
             }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
         }
         
         @media (max-width: 480px) {
@@ -839,7 +974,7 @@
             }
         }
         
-        /* Accessibility */
+        /* Accessibility - Screen Reader Only */
         .sr-only {
             position: absolute;
             width: 1px;
@@ -852,19 +987,20 @@
             border: 0;
         }
         
-        /* Focus styles for accessibility */
-        button:focus,
-        input:focus,
-        a:focus {
-            outline: 2px solid #FF6B6B;
-            outline-offset: 2px;
-        }
-        
         /* High contrast mode support */
         @media (prefers-contrast: high) {
             :root {
                 --text: #000000;
                 --bg: #FFFFFF;
+                --focus-color: #000000;
+            }
+            
+            .filter-btn {
+                border-color: #000000;
+            }
+            
+            .search-input {
+                border-color: #000000;
             }
         }
         
@@ -876,13 +1012,27 @@
                 animation-duration: 0.01ms !important;
                 animation-iteration-count: 1 !important;
                 transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+        
+        /* Dark mode support */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --text: #F8FAFC;
+                --text-light: #CBD5E0;
+                --bg: #1A202C;
+                --white: #2D3748;
             }
         }
     </style>
 </head>
 <body>
     <!-- Skip to content link for accessibility -->
-    <a href="#main-content" class="sr-only">Skip to main content</a>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <!-- Live region for screen reader announcements -->
+    <div aria-live="polite" aria-atomic="true" class="sr-live" id="announcements"></div>
     
     <!-- Header -->
     <header role="banner">
@@ -895,17 +1045,19 @@
             </a>
             <nav role="navigation" aria-label="Main navigation">
                 <ul class="nav" id="nav">
-                    <li><a href="/" class="nav-link active">Home</a></li>
+                    <li><a href="/" class="nav-link active" aria-current="page">Home</a></li>
                     <li><a href="#cats" class="nav-link">Cats</a></li>
                     <li><a href="#dogs" class="nav-link">Dogs</a></li>
                     <li><a href="#favorites" class="nav-link">Favorites</a></li>
-                    <li><a href="about" class="nav-link">About</a></li>
-                    <li><a href="privacy" class="nav-link">Privacy</a></li>
-                    <li><a href="contact" class="nav-link">Contact</a></li>
-                    <li><a href="api" class="nav-link">API</a></li>
+                    <li><a href="/about" class="nav-link">About</a></li>
+                    <li><a href="/privacy" class="nav-link">Privacy</a></li>
+                    <li><a href="/contact" class="nav-link">Contact</a></li>
+                    <li><a href="/api" class="nav-link">API</a></li>
                 </ul>
             </nav>
-            <button class="mobile-menu" onclick="toggleMobileMenu()" aria-label="Toggle mobile menu">☰</button>
+            <button class="mobile-menu" onclick="toggleMobileMenu()" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="nav">
+                <span aria-hidden="true">☰</span>
+            </button>
         </div>
     </header>
 
@@ -916,11 +1068,11 @@
             <p>Download stunning HD wallpapers of cute cats, adorable dogs, and lovely pets. Free, high-quality backgrounds for your desktop, laptop, and mobile devices. Updated daily with the most beautiful pet photography!</p>
             <div class="hero-stats">
                 <div class="stat">
-                    <span class="stat-number" id="total-images">10,000+</span>
+                    <span class="stat-number" id="total-images" aria-label="Over ten thousand">10,000+</span>
                     <span class="stat-label">HD Wallpapers</span>
                 </div>
                 <div class="stat">
-                    <span class="stat-number">4K</span>
+                    <span class="stat-number" aria-label="Four K resolution">4K</span>
                     <span class="stat-label">Ultra Quality</span>
                 </div>
                 <div class="stat">
@@ -932,29 +1084,31 @@
     </section>
 
     <!-- Filter Section -->
-    <section class="filter-section" role="search">
+    <section class="filter-section" role="search" aria-label="Filter and search wallpapers">
         <div class="filter-content">
-            <div class="filter-group" role="group" aria-label="Filter wallpapers by category">
+            <fieldset class="filter-group" aria-labelledby="filter-legend">
+                <legend id="filter-legend" class="sr-only">Filter wallpapers by category</legend>
                 <button class="filter-btn active" data-filter="all" aria-pressed="true">
-                    🐾 All Pets
+                    <span aria-hidden="true">🐾</span> All Pets
                 </button>
                 <button class="filter-btn" data-filter="cats" aria-pressed="false">
-                    🐱 Cats
+                    <span aria-hidden="true">🐱</span> Cats
                 </button>
                 <button class="filter-btn" data-filter="dogs" aria-pressed="false">
-                    🐶 Dogs
+                    <span aria-hidden="true">🐶</span> Dogs
                 </button>
                 <button class="filter-btn" data-filter="puppies" aria-pressed="false">
-                    🐕 Puppies
+                    <span aria-hidden="true">🐕</span> Puppies
                 </button>
                 <button class="filter-btn" data-filter="kittens" aria-pressed="false">
-                    😸 Kittens
+                    <span aria-hidden="true">😸</span> Kittens
                 </button>
-            </div>
+            </fieldset>
             <div class="search-box">
                 <label for="search-input" class="sr-only">Search wallpapers</label>
                 <span class="search-icon" aria-hidden="true">🔍</span>
-                <input type="text" class="search-input" placeholder="Search wallpapers..." id="search-input" aria-label="Search wallpapers">
+                <input type="text" class="search-input" placeholder="Search wallpapers..." id="search-input" aria-label="Search wallpapers" aria-describedby="search-help">
+                <div id="search-help" class="sr-only">Type to search through available wallpapers</div>
             </div>
         </div>
     </section>
@@ -963,69 +1117,73 @@
         <!-- Gallery Sections -->
         <section class="gallery-container" id="cats-section" aria-labelledby="cats-title">
             <h2 id="cats-title" class="section-title">🐱 Cat Wallpapers Collection</h2>
-            <div id="cats-gallery" class="gallery-grid" role="grid" aria-label="Cat wallpapers">
+            <div id="cats-gallery" class="gallery-grid" role="grid" aria-label="Cat wallpapers gallery" aria-busy="false">
                 <!-- Loading cards will be inserted here -->
             </div>
         </section>
 
         <section class="gallery-container" id="dogs-section" aria-labelledby="dogs-title">
             <h2 id="dogs-title" class="section-title">🐶 Dog Wallpapers Collection</h2>
-            <div id="dogs-gallery" class="gallery-grid" role="grid" aria-label="Dog wallpapers">
+            <div id="dogs-gallery" class="gallery-grid" role="grid" aria-label="Dog wallpapers gallery" aria-busy="false">
                 <!-- Loading cards will be inserted here -->
             </div>
         </section>
 
         <div class="load-more-section">
             <button class="load-more-btn" onclick="loadMoreWallpapers()" aria-label="Load more wallpapers">
-                Load More Amazing Wallpapers 📸
+                <span>Load More Amazing Wallpapers</span> <span aria-hidden="true">📸</span>
             </button>
         </div>
     </main>
 
     <!-- Modal for Full Image View -->
-    <div id="image-modal" class="modal" onclick="closeModal(event)" role="dialog" aria-labelledby="modal-title" aria-hidden="true">
+    <div id="image-modal" class="modal" onclick="closeModal(event)" role="dialog" aria-labelledby="modal-title" aria-describedby="modal-description" aria-hidden="true" aria-modal="true">
         <div class="modal-content">
-            <button class="modal-close" onclick="closeModal()" aria-label="Close image preview">&times;</button>
+            <button class="modal-close" onclick="closeModal()" aria-label="Close image preview">
+                <span aria-hidden="true">&times;</span>
+            </button>
             <img id="modal-image" class="modal-image" src="" alt="" role="img">
+            <h3 id="modal-title" class="sr-only">Wallpaper Preview</h3>
+            <p id="modal-description" class="sr-only">Full size preview of selected wallpaper</p>
             <div class="modal-actions">
                 <button class="btn btn-primary" onclick="downloadImage()" aria-label="Download wallpaper in HD">
-                    ⬇️ Download HD
+                    <span aria-hidden="true">⬇️</span> Download HD
                 </button>
                 <button class="btn btn-secondary" onclick="toggleFavoriteModal()" aria-label="Add to favorites">
-                    ❤️ Add to Favorites
+                    <span aria-hidden="true">❤️</span> Add to Favorites
                 </button>
                 <div style="position: relative;">
-                    <button class="btn btn-outline" onclick="toggleShareMenu()" aria-label="Share wallpaper" aria-expanded="false">
-                        📤 Share
+                    <button class="btn btn-outline" onclick="toggleShareMenu()" aria-label="Share wallpaper" aria-expanded="false" aria-haspopup="menu">
+                        <span aria-hidden="true">📤</span> Share
                     </button>
                     <div id="share-menu" class="share-menu" role="menu" aria-label="Share options">
-                        <div class="share-option facebook" onclick="shareToFacebook()" role="menuitem" tabindex="0">
-                            📘 Facebook
-                        </div>
-                        <div class="share-option twitter" onclick="shareToTwitter()" role="menuitem" tabindex="0">
-                            🐦 Twitter
-                        </div>
-                        <div class="share-option whatsapp" onclick="shareToWhatsApp()" role="menuitem" tabindex="0">
-                            📱 WhatsApp
-                        </div>
-                        <div class="share-option linkedin" onclick="shareToLinkedIn()" role="menuitem" tabindex="0">
-                            💼 LinkedIn
-                        </div>
-                        <div class="share-option telegram" onclick="shareToTelegram()" role="menuitem" tabindex="0">
-                            ✈️ Telegram
-                        </div>
-                        <div class="share-option email" onclick="shareViaEmail()" role="menuitem" tabindex="0">
-                            📧 Email
-                        </div>
-                        <div class="share-option pinterest" onclick="shareToPinterest()" role="menuitem" tabindex="0">
-                            📌 Pinterest
-                        </div>
-                        <div class="share-option reddit" onclick="shareToReddit()" role="menuitem" tabindex="0">
-                            🔴 Reddit
-                        </div>
-                        <div class="share-option" onclick="copyToClipboard()" role="menuitem" tabindex="0">
-                            📋 Copy Link
-                        </div>
+                        <button class="share-option facebook" onclick="shareToFacebook()" role="menuitem">
+                            <span aria-hidden="true">📘</span> Facebook
+                        </button>
+                        <button class="share-option twitter" onclick="shareToTwitter()" role="menuitem">
+                            <span aria-hidden="true">🐦</span> Twitter
+                        </button>
+                        <button class="share-option whatsapp" onclick="shareToWhatsApp()" role="menuitem">
+                            <span aria-hidden="true">📱</span> WhatsApp
+                        </button>
+                        <button class="share-option linkedin" onclick="shareToLinkedIn()" role="menuitem">
+                            <span aria-hidden="true">💼</span> LinkedIn
+                        </button>
+                        <button class="share-option telegram" onclick="shareToTelegram()" role="menuitem">
+                            <span aria-hidden="true">✈️</span> Telegram
+                        </button>
+                        <button class="share-option email" onclick="shareViaEmail()" role="menuitem">
+                            <span aria-hidden="true">📧</span> Email
+                        </button>
+                        <button class="share-option pinterest" onclick="shareToPinterest()" role="menuitem">
+                            <span aria-hidden="true">📌</span> Pinterest
+                        </button>
+                        <button class="share-option reddit" onclick="shareToReddit()" role="menuitem">
+                            <span aria-hidden="true">🔴</span> Reddit
+                        </button>
+                        <button class="share-option" onclick="copyToClipboard()" role="menuitem">
+                            <span aria-hidden="true">📋</span> Copy Link
+                        </button>
                     </div>
                 </div>
             </div>
@@ -1035,13 +1193,15 @@
     <!-- Footer -->
     <footer role="contentinfo">
         <div class="footer-content">
-            <p class="footer-text">🐾 Pet Wallpaper Paradise - Your source for premium pet wallpapers</p>
-            <div class="footer-links">
-                <a href="about">About</a>
-                <a href="privacy">Privacy</a>
-                <a href="contact">Contact</a>
-                <a href="api">API</a>
-            </div>
+            <p class="footer-text"><span aria-hidden="true">🐾</span> Pet Wallpaper Paradise - Your source for premium pet wallpapers</p>
+            <nav aria-label="Footer navigation">
+                <ul class="footer-links">
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/privacy">Privacy</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                    <li><a href="/api">API</a></li>
+                </ul>
+            </nav>
             <p>&copy; 2025 Pet Wallpaper Paradise | catdog.vinnesia.my.id</p>
             <p><small>All images are royalty-free and sourced from The Cat API & The Dog API</small></p>
         </div>
@@ -1076,10 +1236,20 @@
             };
         };
         
+        // Accessibility helper for screen reader announcements
+        function announceToScreenReader(message) {
+            const announcements = $('#announcements');
+            if (announcements) {
+                announcements.textContent = message;
+                setTimeout(() => {
+                    announcements.textContent = '';
+                }, 1000);
+            }
+        }
+        
         // Initialize favorites from memory storage
         function initializeFavorites() {
             try {
-                // Try localStorage first, fallback to memory
                 const savedFavorites = localStorage?.getItem?.('favorites');
                 if (savedFavorites) {
                     state.favorites = JSON.parse(savedFavorites);
@@ -1165,10 +1335,10 @@
             return `
                 <article class="wallpaper-card" data-id="${item.id}" data-type="${item.type}" role="gridcell">
                     <div class="wallpaper-image">
-                        <img src="${item.url}" alt="${item.title}" loading="lazy" 
-                             onclick="openModal('${item.id}')" role="button" tabindex="0"
+                        <img src="${item.url}" alt="${item.title} - ${item.type} wallpaper" loading="lazy" 
+                             onclick="openModal('${item.id}')" tabindex="0"
                              onkeydown="handleImageKeydown(event, '${item.id}')">
-                        <div class="image-overlay">
+                        <div class="image-overlay" aria-hidden="true">
                             <div class="overlay-content">
                                 <div class="wallpaper-title">${item.title}</div>
                                 <div class="wallpaper-meta">
@@ -1187,24 +1357,33 @@
                         <div class="wallpaper-actions">
                             <button class="btn btn-primary" onclick="downloadWallpaper('${item.id}')" 
                                     aria-label="Download ${item.title} wallpaper">
-                                ⬇️ Download
+                                <span aria-hidden="true">⬇️</span> Download
                             </button>
                             <button class="btn ${isFav ? 'btn-secondary' : 'btn-outline'}" 
                                     onclick="toggleFavorite('${item.id}')"
                                     id="fav-${item.id}"
-                                    aria-label="${isFav ? 'Remove from' : 'Add to'} favorites">
-                                ${isFav ? '❤️' : '🤍'} ${isFav ? 'Favorited' : 'Favorite'}
+                                    aria-label="${isFav ? 'Remove from' : 'Add to'} favorites"
+                                    aria-pressed="${isFav}">
+                                <span aria-hidden="true">${isFav ? '❤️' : '🤍'}</span> ${isFav ? 'Favorited' : 'Favorite'}
                             </button>
                             <div style="position: relative;">
                                 <button class="btn btn-outline" onclick="showCardShareMenu('${item.id}')" 
-                                        aria-label="Share ${item.title}" aria-expanded="false">
-                                    📤 Share
+                                        aria-label="Share ${item.title}" aria-expanded="false" aria-haspopup="menu">
+                                    <span aria-hidden="true">📤</span> Share
                                 </button>
-                                <div id="share-menu-${item.id}" class="share-menu">
-                                    <div class="share-option facebook" onclick="shareToFacebook('${item.id}')">📘 Facebook</div>
-                                    <div class="share-option twitter" onclick="shareToTwitter('${item.id}')">🐦 Twitter</div>
-                                    <div class="share-option whatsapp" onclick="shareToWhatsApp('${item.id}')">📱 WhatsApp</div>
-                                    <div class="share-option" onclick="copyToClipboard('${item.id}')">📋 Copy Link</div>
+                                <div id="share-menu-${item.id}" class="share-menu" role="menu" aria-label="Share ${item.title}">
+                                    <button class="share-option facebook" onclick="shareToFacebook('${item.id}')" role="menuitem">
+                                        <span aria-hidden="true">📘</span> Facebook
+                                    </button>
+                                    <button class="share-option twitter" onclick="shareToTwitter('${item.id}')" role="menuitem">
+                                        <span aria-hidden="true">🐦</span> Twitter
+                                    </button>
+                                    <button class="share-option whatsapp" onclick="shareToWhatsApp('${item.id}')" role="menuitem">
+                                        <span aria-hidden="true">📱</span> WhatsApp
+                                    </button>
+                                    <button class="share-option" onclick="copyToClipboard('${item.id}')" role="menuitem">
+                                        <span aria-hidden="true">📋</span> Copy Link
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -1231,6 +1410,7 @@
             if (!gallery) return;
             
             gallery.innerHTML = items.map(item => createWallpaperCard(item)).join('');
+            gallery.setAttribute('aria-busy', 'false');
         }
         
         function appendWallpapers(container, items) {
@@ -1239,6 +1419,7 @@
             
             const newItems = items.map(item => createWallpaperCard(item)).join('');
             gallery.insertAdjacentHTML('beforeend', newItems);
+            gallery.setAttribute('aria-busy', 'false');
         }
         
         function showLoadingCards(container, count = 6) {
@@ -1247,15 +1428,19 @@
             
             const loadingCards = Array(count).fill().map(() => createLoadingCard()).join('');
             gallery.innerHTML = loadingCards;
+            gallery.setAttribute('aria-busy', 'true');
         }
         
         function updateLoadingState() {
             const loadMoreBtn = $('.load-more-btn');
             if (loadMoreBtn) {
                 loadMoreBtn.disabled = state.loading;
-                loadMoreBtn.textContent = state.loading ? 
-                    '⏳ Loading Amazing Wallpapers...' : 
-                    'Load More Amazing Wallpapers 📸';
+                const span = loadMoreBtn.querySelector('span');
+                if (span) {
+                    span.textContent = state.loading ? 
+                        'Loading Amazing Wallpapers...' : 
+                        'Load More Amazing Wallpapers';
+                }
                 loadMoreBtn.setAttribute('aria-busy', state.loading);
             }
         }
@@ -1278,9 +1463,14 @@
             state.currentModal = image;
             const modal = $('#image-modal');
             const modalImage = $('#modal-image');
+            const modalTitle = $('#modal-title');
+            const modalDescription = $('#modal-description');
             
             modalImage.src = image.url;
-            modalImage.alt = image.title;
+            modalImage.alt = `${image.title} - ${image.type} wallpaper`;
+            modalTitle.textContent = image.title;
+            modalDescription.textContent = `Full size preview of ${image.title}, a ${image.type} wallpaper`;
+            
             modal.classList.add('active');
             modal.setAttribute('aria-hidden', 'false');
             
@@ -1291,6 +1481,8 @@
             
             document.body.style.overflow = 'hidden';
             updateModalButtons(image);
+            
+            announceToScreenReader(`Opened ${image.title} wallpaper preview`);
         }
         
         function closeModal(event) {
@@ -1302,24 +1494,31 @@
             modal.classList.remove('active');
             modal.setAttribute('aria-hidden', 'true');
             document.body.style.overflow = 'auto';
-            state.currentModal = null;
             
             // Close share menu if open
             if (state.shareMenuOpen) {
                 toggleShareMenu();
             }
+            
+            state.currentModal = null;
+            announceToScreenReader('Closed wallpaper preview');
         }
         
         function updateModalButtons(image) {
             const isFav = state.favorites.includes(image.id);
             const favBtn = $('.modal-actions .btn-secondary');
             if (favBtn) {
-                favBtn.innerHTML = `${isFav ? '❤️' : '🤍'} ${isFav ? 'Remove from Favorites' : 'Add to Favorites'}`;
+                const span = favBtn.querySelector('span[aria-hidden="true"]');
+                if (span) {
+                    span.textContent = isFav ? '❤️' : '🤍';
+                }
+                favBtn.innerHTML = `<span aria-hidden="true">${isFav ? '❤️' : '🤍'}</span> ${isFav ? 'Remove from Favorites' : 'Add to Favorites'}`;
                 favBtn.setAttribute('aria-label', `${isFav ? 'Remove from' : 'Add to'} favorites`);
+                favBtn.setAttribute('aria-pressed', isFav);
             }
         }
         
-        // Enhanced Download Function with CORS proxy
+        // Enhanced Download Function
         async function downloadWallpaper(imageId) {
             const allImages = [...state.cats, ...state.dogs];
             const image = allImages.find(img => img.id === imageId);
@@ -1327,9 +1526,9 @@
             if (!image) return;
             
             try {
-                showNotification('📸 Preparing download...', 'info');
+                showNotification('Preparing download...', 'info');
+                announceToScreenReader(`Downloading ${image.title}`);
                 
-                // Method 1: Try direct download first
                 const response = await fetch(image.url, { mode: 'cors' });
                 
                 if (response.ok) {
@@ -1343,9 +1542,9 @@
                     document.body.removeChild(link);
                     window.URL.revokeObjectURL(url);
                     
-                    showNotification(`✅ Downloaded: ${image.title}`, 'success');
+                    showNotification(`Downloaded: ${image.title}`, 'success');
+                    announceToScreenReader(`Successfully downloaded ${image.title}`);
                 } else {
-                    // Method 2: Fallback to direct link download
                     const link = document.createElement('a');
                     link.href = image.url;
                     link.download = `${image.title.replace(/\s+/g, '-').toLowerCase()}-wallpaper.jpg`;
@@ -1355,12 +1554,11 @@
                     link.click();
                     document.body.removeChild(link);
                     
-                    showNotification(`📸 Opening download: ${image.title}`, 'success');
+                    showNotification(`Opening download: ${image.title}`, 'success');
                 }
             } catch (error) {
                 console.error('Download error:', error);
                 
-                // Method 3: Final fallback - open in new tab
                 const link = document.createElement('a');
                 link.href = image.url;
                 link.target = '_blank';
@@ -1369,7 +1567,7 @@
                 link.click();
                 document.body.removeChild(link);
                 
-                showNotification('📸 Opened in new tab for download', 'info');
+                showNotification('Opened in new tab for download', 'info');
             }
         }
         
@@ -1382,13 +1580,17 @@
         // Favorites System
         function toggleFavorite(imageId) {
             const index = state.favorites.indexOf(imageId);
+            const allImages = [...state.cats, ...state.dogs];
+            const image = allImages.find(img => img.id === imageId);
             
             if (index > -1) {
                 state.favorites.splice(index, 1);
-                showNotification('💔 Removed from favorites', 'info');
+                showNotification('Removed from favorites', 'info');
+                announceToScreenReader(`Removed ${image?.title || 'wallpaper'} from favorites`);
             } else {
                 state.favorites.push(imageId);
-                showNotification('❤️ Added to favorites!', 'success');
+                showNotification('Added to favorites!', 'success');
+                announceToScreenReader(`Added ${image?.title || 'wallpaper'} to favorites`);
             }
             
             saveFavorites();
@@ -1407,8 +1609,13 @@
             const cardBtn = $(`#fav-${imageId}`);
             if (cardBtn) {
                 cardBtn.className = `btn ${isFav ? 'btn-secondary' : 'btn-outline'}`;
-                cardBtn.innerHTML = `${isFav ? '❤️' : '🤍'} ${isFav ? 'Favorited' : 'Favorite'}`;
+                const span = cardBtn.querySelector('span[aria-hidden="true"]');
+                if (span) {
+                    span.textContent = isFav ? '❤️' : '🤍';
+                }
+                cardBtn.innerHTML = `<span aria-hidden="true">${isFav ? '❤️' : '🤍'}</span> ${isFav ? 'Favorited' : 'Favorite'}`;
                 cardBtn.setAttribute('aria-label', `${isFav ? 'Remove from' : 'Add to'} favorites`);
+                cardBtn.setAttribute('aria-pressed', isFav);
             }
             
             if (state.currentModal && state.currentModal.id === imageId) {
@@ -1425,13 +1632,44 @@
                 state.shareMenuOpen = !state.shareMenuOpen;
                 shareMenu.classList.toggle('active', state.shareMenuOpen);
                 shareBtn.setAttribute('aria-expanded', state.shareMenuOpen);
+                
+                if (state.shareMenuOpen) {
+                    // Focus first menu item
+                    const firstItem = shareMenu.querySelector('.share-option');
+                    if (firstItem) {
+                        setTimeout(() => firstItem.focus(), 100);
+                    }
+                }
+                
+                announceToScreenReader(state.shareMenuOpen ? 'Share menu opened' : 'Share menu closed');
             }
         }
         
         function showCardShareMenu(imageId) {
             const shareMenu = $(`#share-menu-${imageId}`);
-            if (shareMenu) {
-                shareMenu.classList.toggle('active');
+            const shareBtn = $(`button[onclick="showCardShareMenu('${imageId}')"]`);
+            
+            if (shareMenu && shareBtn) {
+                const isOpen = shareMenu.classList.contains('active');
+                
+                // Close all other share menus
+                $$('.share-menu.active').forEach(menu => {
+                    if (menu.id !== `share-menu-${imageId}`) {
+                        menu.classList.remove('active');
+                    }
+                });
+                
+                shareMenu.classList.toggle('active', !isOpen);
+                shareBtn.setAttribute('aria-expanded', !isOpen);
+                
+                if (!isOpen) {
+                    const firstItem = shareMenu.querySelector('.share-option');
+                    if (firstItem) {
+                        setTimeout(() => firstItem.focus(), 100);
+                    }
+                }
+                
+                announceToScreenReader(`Share menu for ${imageId} ${!isOpen ? 'opened' : 'closed'}`);
             }
         }
         
@@ -1461,7 +1699,8 @@
             
             const url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(data.url)}&quote=${encodeURIComponent(data.description)}`;
             window.open(url, '_blank', 'width=600,height=400');
-            showNotification('📘 Opening Facebook share', 'success');
+            showNotification('Opening Facebook share', 'success');
+            announceToScreenReader('Opening Facebook share window');
         }
         
         function shareToTwitter(imageId = null) {
@@ -1471,7 +1710,8 @@
             const text = `${data.description} #PetWallpapers #CutePets #FreeWallpapers`;
             const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(data.url)}`;
             window.open(url, '_blank', 'width=600,height=400');
-            showNotification('🐦 Opening Twitter share', 'success');
+            showNotification('Opening Twitter share', 'success');
+            announceToScreenReader('Opening Twitter share window');
         }
         
         function shareToWhatsApp(imageId = null) {
@@ -1481,7 +1721,8 @@
             const text = `${data.description}\n${data.url}`;
             const url = `https://wa.me/?text=${encodeURIComponent(text)}`;
             window.open(url, '_blank');
-            showNotification('📱 Opening WhatsApp share', 'success');
+            showNotification('Opening WhatsApp share', 'success');
+            announceToScreenReader('Opening WhatsApp share');
         }
         
         function shareToLinkedIn(imageId = null) {
@@ -1490,7 +1731,8 @@
             
             const url = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(data.url)}`;
             window.open(url, '_blank', 'width=600,height=400');
-            showNotification('💼 Opening LinkedIn share', 'success');
+            showNotification('Opening LinkedIn share', 'success');
+            announceToScreenReader('Opening LinkedIn share window');
         }
         
         function shareToTelegram(imageId = null) {
@@ -1500,7 +1742,8 @@
             const text = `${data.description}\n${data.url}`;
             const url = `https://t.me/share/url?url=${encodeURIComponent(data.url)}&text=${encodeURIComponent(data.description)}`;
             window.open(url, '_blank');
-            showNotification('✈️ Opening Telegram share', 'success');
+            showNotification('Opening Telegram share', 'success');
+            announceToScreenReader('Opening Telegram share');
         }
         
         function shareViaEmail(imageId = null) {
@@ -1511,7 +1754,8 @@
             const body = encodeURIComponent(`${data.description}\n\nCheck it out: ${data.url}`);
             const url = `mailto:?subject=${subject}&body=${body}`;
             window.location.href = url;
-            showNotification('📧 Opening email client', 'success');
+            showNotification('Opening email client', 'success');
+            announceToScreenReader('Opening email client');
         }
         
         function shareToPinterest(imageId = null) {
@@ -1520,7 +1764,8 @@
             
             const url = `https://pinterest.com/pin/create/button/?url=${encodeURIComponent(data.url)}&media=${encodeURIComponent(data.imageUrl)}&description=${encodeURIComponent(data.description)}`;
             window.open(url, '_blank', 'width=600,height=400');
-            showNotification('📌 Opening Pinterest share', 'success');
+            showNotification('Opening Pinterest share', 'success');
+            announceToScreenReader('Opening Pinterest share window');
         }
         
         function shareToReddit(imageId = null) {
@@ -1529,7 +1774,8 @@
             
             const url = `https://reddit.com/submit?url=${encodeURIComponent(data.url)}&title=${encodeURIComponent(data.title)}`;
             window.open(url, '_blank', 'width=600,height=400');
-            showNotification('🔴 Opening Reddit share', 'success');
+            showNotification('Opening Reddit share', 'success');
+            announceToScreenReader('Opening Reddit share window');
         }
         
         async function copyToClipboard(imageId = null) {
@@ -1539,7 +1785,8 @@
             try {
                 if (navigator.clipboard && navigator.clipboard.writeText) {
                     await navigator.clipboard.writeText(data.url);
-                    showNotification('📋 Link copied to clipboard!', 'success');
+                    showNotification('Link copied to clipboard!', 'success');
+                    announceToScreenReader('Link copied to clipboard');
                 } else {
                     // Fallback for older browsers
                     const textArea = document.createElement('textarea');
@@ -1551,40 +1798,13 @@
                     textArea.select();
                     document.execCommand('copy');
                     document.body.removeChild(textArea);
-                    showNotification('📋 Link copied to clipboard!', 'success');
+                    showNotification('Link copied to clipboard!', 'success');
+                    announceToScreenReader('Link copied to clipboard');
                 }
             } catch (error) {
                 console.error('Copy failed:', error);
                 showNotification('Failed to copy link', 'error');
-            }
-        }
-        
-        // Native Web Share API
-        async function shareNative(imageId = null) {
-            const data = getImageData(imageId);
-            if (!data) return;
-            
-            try {
-                if (navigator.share && navigator.canShare && navigator.canShare({
-                    title: data.title,
-                    text: data.description,
-                    url: data.url
-                })) {
-                    await navigator.share({
-                        title: data.title,
-                        text: data.description,
-                        url: data.url
-                    });
-                    showNotification('📤 Shared successfully!', 'success');
-                } else {
-                    // Fallback to custom share menu
-                    toggleShareMenu();
-                }
-            } catch (error) {
-                if (error.name !== 'AbortError') {
-                    console.error('Share failed:', error);
-                    showNotification('Failed to share', 'error');
-                }
+                announceToScreenReader('Failed to copy link');
             }
         }
         
@@ -1656,7 +1876,8 @@
                 if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
                     e.preventDefault();
                     searchInput.focus();
-                    showNotification('🔍 Search focused', 'info');
+                    showNotification('Search focused', 'info');
+                    announceToScreenReader('Search input focused');
                 }
             });
         }
@@ -1671,9 +1892,13 @@
                     if (target.startsWith('#')) {
                         e.preventDefault();
                         
-                        // Update active state
-                        $$('.nav-link').forEach(l => l.classList.remove('active'));
+                        // Update active state and aria-current
+                        $$('.nav-link').forEach(l => {
+                            l.classList.remove('active');
+                            l.removeAttribute('aria-current');
+                        });
                         this.classList.add('active');
+                        this.setAttribute('aria-current', 'page');
                         
                         // Scroll to section
                         const section = $(`${target}-section`) || $(target);
@@ -1681,20 +1906,51 @@
                             section.scrollIntoView({ behavior: 'smooth' });
                             section.focus();
                         }
+                        
+                        // Close mobile menu after navigation
+                        const nav = $('#nav');
+                        const menuBtn = $('.mobile-menu');
+                        if (nav.classList.contains('active')) {
+                            nav.classList.remove('active');
+                            menuBtn.setAttribute('aria-expanded', 'false');
+                        }
+                        
+                        announceToScreenReader(`Navigated to ${this.textContent}`);
                     }
                     // Handle home link (/)
                     else if (target === '/') {
                         e.preventDefault();
                         
-                        // Update active state
-                        $$('.nav-link').forEach(l => l.classList.remove('active'));
+                        // Update active state and aria-current
+                        $$('.nav-link').forEach(l => {
+                            l.classList.remove('active');
+                            l.removeAttribute('aria-current');
+                        });
                         this.classList.add('active');
+                        this.setAttribute('aria-current', 'page');
+                        
+                        // Close mobile menu after navigation
+                        const nav = $('#nav');
+                        const menuBtn = $('.mobile-menu');
+                        if (nav.classList.contains('active')) {
+                            nav.classList.remove('active');
+                            menuBtn.setAttribute('aria-expanded', 'false');
+                        }
                         
                         // Scroll to top
                         window.scrollTo({ top: 0, behavior: 'smooth' });
+                        announceToScreenReader('Navigated to home');
                     }
-                    // External pages (about, privacy, contact, api) will navigate normally
-                    // No preventDefault() so they load their respective pages
+                    // External pages (/about, /privacy, /contact, /api) will navigate normally
+                    // Just close mobile menu if it's open
+                    else {
+                        const nav = $('#nav');
+                        const menuBtn = $('.mobile-menu');
+                        if (nav.classList.contains('active')) {
+                            nav.classList.remove('active');
+                            menuBtn.setAttribute('aria-expanded', 'false');
+                        }
+                    }
                 });
             });
         }
@@ -1707,20 +1963,8 @@
             nav.classList.toggle('active');
             menuBtn.setAttribute('aria-expanded', !isOpen);
             menuBtn.setAttribute('aria-label', isOpen ? 'Open mobile menu' : 'Close mobile menu');
-        }
-        
-        // Accessibility helper
-        function announceToScreenReader(message) {
-            const announcement = document.createElement('div');
-            announcement.setAttribute('aria-live', 'polite');
-            announcement.setAttribute('aria-atomic', 'true');
-            announcement.className = 'sr-only';
-            announcement.textContent = message;
-            document.body.appendChild(announcement);
             
-            setTimeout(() => {
-                document.body.removeChild(announcement);
-            }, 1000);
+            announceToScreenReader(`Mobile menu ${!isOpen ? 'opened' : 'closed'}`);
         }
         
         // Logo cycling functionality
@@ -1752,14 +1996,15 @@
                 logo.style.transform = '';
                 
                 const messages = [
-                    '🐾 Classic paw style!',
-                    '🐱 Meow! Cat mode activated!',
-                    '🐶 Woof! Dog mode activated!',
-                    '❤️ Love for pets mode!',
-                    '✨ Magical pet paradise!'
+                    'Classic paw style!',
+                    'Meow! Cat mode activated!',
+                    'Woof! Dog mode activated!',
+                    'Love for pets mode!',
+                    'Magical pet paradise!'
                 ];
                 
                 showNotification(messages[currentLogoIndex], 'success');
+                announceToScreenReader(messages[currentLogoIndex]);
             }, 150);
         }
         
@@ -1771,7 +2016,9 @@
             notification.setAttribute('aria-live', 'assertive');
             notification.innerHTML = `
                 <span>${message}</span>
-                <button onclick="this.parentElement.remove()" aria-label="Close notification">&times;</button>
+                <button onclick="this.parentElement.remove()" aria-label="Close notification">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             `;
             
             document.body.appendChild(notification);
@@ -1795,7 +2042,8 @@
             appendWallpapers('#cats-gallery', newCats);
             appendWallpapers('#dogs-gallery', newDogs);
             
-            showNotification('🎉 New wallpapers loaded!', 'success');
+            showNotification('New wallpapers loaded!', 'success');
+            announceToScreenReader(`Loaded ${newCats.length + newDogs.length} new wallpapers`);
         }
         
         // Setup scroll effects for header
@@ -1859,7 +2107,7 @@
             }, 1000);
         }
         
-        // Setup keyboard shortcuts
+        // Enhanced Keyboard Shortcuts
         function setupKeyboardShortcuts() {
             document.addEventListener('keydown', function(e) {
                 // Close modal with Escape
@@ -1869,18 +2117,21 @@
                     } else {
                         closeModal();
                     }
+                    return;
                 }
                 
                 // Search shortcut (Ctrl/Cmd + K)
                 if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
                     e.preventDefault();
                     $('#search-input').focus();
+                    return;
                 }
                 
                 // Download shortcut (Ctrl/Cmd + D) in modal
                 if ((e.ctrlKey || e.metaKey) && e.key === 'd' && state.currentModal) {
                     e.preventDefault();
                     downloadImage();
+                    return;
                 }
                 
                 // Navigate through filters with arrow keys
@@ -1889,7 +2140,7 @@
                     const allFilters = Array.from($$('.filter-btn'));
                     const currentIndex = allFilters.indexOf(activeFilter);
                     
-                    if (currentIndex !== -1) {
+                    if (currentIndex !== -1 && document.activeElement === activeFilter) {
                         e.preventDefault();
                         let newIndex;
                         if (e.key === 'ArrowLeft') {
@@ -1901,6 +2152,25 @@
                         allFilters[newIndex].focus();
                     }
                 }
+                
+                // Navigate through share menu with arrow keys
+                if ((e.key === 'ArrowUp' || e.key === 'ArrowDown') && state.shareMenuOpen) {
+                    e.preventDefault();
+                    const shareOptions = Array.from($$('#share-menu .share-option'));
+                    const currentIndex = shareOptions.indexOf(document.activeElement);
+                    
+                    if (currentIndex !== -1) {
+                        let newIndex;
+                        if (e.key === 'ArrowUp') {
+                            newIndex = currentIndex > 0 ? currentIndex - 1 : shareOptions.length - 1;
+                        } else {
+                            newIndex = currentIndex < shareOptions.length - 1 ? currentIndex + 1 : 0;
+                        }
+                        shareOptions[newIndex].focus();
+                    } else if (shareOptions.length > 0) {
+                        shareOptions[0].focus();
+                    }
+                }
             });
         }
         
@@ -1909,8 +2179,15 @@
             document.addEventListener('click', function(e) {
                 // Close card share menus
                 $$('.share-menu.active').forEach(menu => {
-                    if (!menu.contains(e.target) && !e.target.closest('button[onclick*="showCardShareMenu"]')) {
+                    const menuId = menu.id;
+                    const imageId = menuId.replace('share-menu-', '');
+                    const shareBtn = $(`button[onclick="showCardShareMenu('${imageId}')"]`);
+                    
+                    if (!menu.contains(e.target) && e.target !== shareBtn) {
                         menu.classList.remove('active');
+                        if (shareBtn) {
+                            shareBtn.setAttribute('aria-expanded', 'false');
+                        }
                     }
                 });
                 
@@ -1969,6 +2246,7 @@
             } catch (error) {
                 console.error('Failed to initialize app:', error);
                 showNotification('Failed to load wallpapers. Please refresh the page.', 'error');
+                announceToScreenReader('Failed to load wallpapers. Please refresh the page.');
             }
         }
         
@@ -1987,19 +2265,13 @@
         
         // Network status handling
         window.addEventListener('online', () => {
-            showNotification('🌐 Back online! API access restored.', 'success');
+            showNotification('Back online! API access restored.', 'success');
+            announceToScreenReader('Internet connection restored');
         });
         
         window.addEventListener('offline', () => {
-            showNotification('📴 You are offline. Some features may not work.', 'info');
-        });
-        
-        // Prevent context menu on images (optional)
-        document.addEventListener('contextmenu', function(e) {
-            if (e.target.tagName === 'IMG' && e.target.closest('.wallpaper-image')) {
-                e.preventDefault();
-                showNotification('Use the download button to save images', 'info');
-            }
+            showNotification('You are offline. Some features may not work.', 'info');
+            announceToScreenReader('Internet connection lost');
         });
         
         // Initialize when DOM is ready
@@ -2053,7 +2325,7 @@
     <link rel="preload" as="fetch" href="https://api.thecatapi.com/v1/images/search?limit=12&page=0" crossorigin="anonymous">
     <link rel="preload" as="fetch" href="https://api.thedogapi.com/v1/images/search?limit=12&page=0" crossorigin="anonymous">
     
-    <!-- Performance and Analytics (placeholder) -->
+    <!-- Performance and Analytics -->
     <script>
         // Performance monitoring
         window.addEventListener('load', function() {
@@ -2061,9 +2333,6 @@
                 const perfData = performance.timing;
                 const pageLoadTime = perfData.loadEventEnd - perfData.navigationStart;
                 console.log(`⚡ Page loaded in ${pageLoadTime}ms`);
-                
-                // You can send this data to your analytics service
-                // analytics.track('page_load_time', { duration: pageLoadTime });
             }, 0);
         });
         
