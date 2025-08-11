@@ -820,6 +820,11 @@
             }
         }
         
+        /* Mobile-only menu items */
+        .mobile-only {
+            display: none;
+        }
+        
         @media (max-width: 768px) {
             .header-content {
                 padding: 1rem;
@@ -849,6 +854,28 @@
             .nav a {
                 padding: 1rem;
                 border-radius: var(--radius-sm);
+            }
+            
+            /* Show mobile-only items on mobile */
+            .mobile-only {
+                display: block;
+            }
+            
+            /* Add separator line before mobile-only items */
+            .mobile-only:first-of-type {
+                border-top: 1px solid rgba(0,0,0,0.1);
+                margin-top: 0.5rem;
+                padding-top: 0.5rem;
+            }
+            
+            .mobile-only a {
+                color: var(--text-light);
+                font-size: 0.9rem;
+            }
+            
+            .mobile-only a:hover {
+                background: var(--secondary);
+                color: var(--white);
             }
             
             .hero {
@@ -943,6 +970,9 @@
                 <li><a href="#cats" class="nav-link">Cats</a></li>
                 <li><a href="#dogs" class="nav-link">Dogs</a></li>
                 <li><a href="#favorites" class="nav-link">Favorites</a></li>
+                <li class="mobile-only"><a href="#about" class="nav-link" onclick="showAbout()">About</a></li>
+                <li class="mobile-only"><a href="#privacy" class="nav-link" onclick="showPrivacy()">Privacy</a></li>
+                <li class="mobile-only"><a href="#contact" class="nav-link" onclick="showContact()">Contact</a></li>
             </ul>
             <button class="mobile-menu" onclick="toggleMobileMenu()">☰</button>
         </div>
@@ -1539,6 +1569,102 @@
                     }
                 });
             });
+        }
+        
+        // Mobile menu functions for About, Privacy, Contact
+        function showAbout() {
+            const aboutInfo = `
+                🐾 Pet Wallpaper Paradise
+                
+                We're passionate about bringing you the most adorable pet wallpapers from around the world! 
+                
+                Our mission is to spread joy through cute cats, dogs, puppies, and kittens. All wallpapers are sourced ethically and are completely free to download.
+                
+                ✨ Features:
+                • 10,000+ HD wallpapers
+                • 4K quality images
+                • Mobile & desktop friendly
+                • Daily updates
+                • No watermarks
+                
+                Built with ❤️ for pet lovers everywhere!
+            `;
+            
+            showNotification('📖 About Us', 'info');
+            
+            // Create a more detailed modal-style notification
+            setTimeout(() => {
+                alert(aboutInfo);
+            }, 500);
+            
+            // Close mobile menu
+            toggleMobileMenu();
+        }
+        
+        function showPrivacy() {
+            const privacyInfo = `
+                🔒 Privacy Policy - Pet Wallpaper Paradise
+                
+                Your Privacy Matters:
+                
+                📊 Data Collection:
+                • We don't collect personal information
+                • No tracking cookies used
+                • Favorites stored locally on your device
+                
+                🖼️ Images:
+                • All images from The Cat API & The Dog API
+                • No copyright infringement
+                • Free for personal use
+                
+                🌐 Third Parties:
+                • API calls to fetch pet images only
+                • No data shared with advertisers
+                
+                📧 Contact: privacy@catdog.vinnesia.my.id
+                Last updated: January 2025
+            `;
+            
+            showNotification('🔐 Privacy protected! No data collected.', 'success');
+            
+            setTimeout(() => {
+                alert(privacyInfo);
+            }, 500);
+            
+            toggleMobileMenu();
+        }
+        
+        function showContact() {
+            const contactInfo = `
+                📧 Contact Pet Wallpaper Paradise
+                
+                Get in Touch:
+                
+                💌 General Inquiries:
+                hello@catdog.vinnesia.my.id
+                
+                🐛 Bug Reports:
+                support@catdog.vinnesia.my.id
+                
+                💼 Business Partnerships:
+                business@catdog.vinnesia.my.id
+                
+                📱 Social Media:
+                Follow us for daily pet content!
+                
+                🌐 Website:
+                https://catdog.vinnesia.my.id
+                
+                We love hearing from fellow pet enthusiasts! 🐾
+            `;
+            
+            showNotification('📞 Contact info copied! Check the popup.', 'info');
+            
+            setTimeout(() => {
+                alert(contactInfo);
+            }, 500);
+            
+            toggleMobileMenu();
         }
         
         function toggleMobileMenu() {
