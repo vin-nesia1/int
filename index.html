@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Basic Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- SEO Meta Tags -->
+    <title>CountryScope - Explore World Countries, Flags, Population & Travel Information</title>
+    <meta name="description" content="Discover comprehensive information about 195+ countries worldwide. Explore flags, population data, capitals, regions, and travel destinations. Your ultimate guide to world geography and tourism.">
+    <meta name="keywords" content="countries, world flags, population data, capitals, travel destinations, geography, tourism, world atlas, country information, global statistics">
+    <meta name="author" content="CountryScope - int.vinnesia.my.id">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://int.vinnesia.my.id">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="CountryScope - Explore World Countries & Travel Information">
+    <meta property="og:description" content="Comprehensive database of world countries with flags, population, capitals and travel insights. Perfect for geography enthusiasts and travelers.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://int.vinnesia.my.id">
+    <meta property="og:image" content="https://int.vinnesia.my.id/og-image.jpg">
+    <meta property="og:site_name" content="CountryScope">
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="CountryScope - World Countries Explorer">
+    <meta name="twitter:description" content="Explore 195+ countries with detailed information, flags, population data, and travel insights.">
+    <meta name="twitter:image" content="https://int.vinnesia.my.id/twitter-image.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23007bff'/%3E%3Ctext x='50' y='60' font-family='Arial' font-size='40' font-weight='bold' text-anchor='middle' fill='white'%3E🌍%3C/text%3E%3C/svg%3E">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "CountryScope",
+        "description": "Comprehensive world countries database with flags, population, capitals and travel information",
+        "url": "https://int.vinnesia.my.id",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://int.vinnesia.my.id?search={search_term_string}",
+            "query-input": "required name=search_term_string"
+        }
+    }
+    </script>
+    
+    <!-- Critical CSS -->
+    <style>
+        /* CSS Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        /* Header Styles */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .brand {
+            text-align: center;
+        }
+        
+        .brand h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+        
+        .brand p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+        
+        /* Controls Styles */
+        .controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .search-box, .filter-select {
+            padding: 0.75rem 1rem;
+            border: 2px solid #e1e5e9;
+            border-radius: 25px;
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s ease;
+            background: white;
+        }
+        
+        .search-box {
+            width: 300px;
+            max-width: 100%;
+        }
+        
+        .search-box:focus, .filter-select:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        .filter-select {
+            min-width: 150px;
+            cursor: pointer;
+        }
+        
+        /* Stats Styles */
+        .stats {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 1rem;
+            margin: 2rem 0;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .stats-content {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #667eea;
+            display: block;
+        }
+        
+        .stat-label {
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 0.25rem;
+        }
+        
+        /* Loading Styles */
+        .loading {
+            text-align: center;
+            padding: 3rem 1rem;
+            color: white;
+            font-size: 1.2rem;
+        }
+        
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top: 4px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Countries Grid */
+        .countries-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            padding: 2rem 0;
+        }
+        
+        /* Country Card Styles */
+        .country-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .country-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+        
+        .flag-container {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .flag {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .country-card:hover .flag {
+            transform: scale(1.05);
+        }
+        
+        .country-info {
+            padding: 1.5rem;
+        }
+        
+        .country-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .info-item:last-child {
+            border-bottom: none;
+        }
+        
+        .info-label {
+            font-weight: 600;
+            color: #555;
+        }
+        
+        .info-value {
+            color: #777;
+            text-align: right;
+        }
+        
+        .region-badge {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        
+        /* No Results */
+        .no-results {
+            text-align: center;
+            padding: 3rem 1rem;
+            color: white;
+        }
+        
+        .no-results h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        /* Footer */
+        .footer {
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-top: 3rem;
+        }
+        
+        .footer a {
+            color: #667eea;
+            text-decoration: none;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .brand h1 {
+                font-size: 2rem;
+            }
+            
+            .controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .search-box, .filter-select {
+                width: 100%;
+            }
+            
+            .countries-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .stats-content {
+                gap: 1rem;
+            }
+            
+            .stat-number {
+                font-size: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 0.5rem;
+            }
+            
+            .country-info {
+                padding: 1rem;
+            }
+            
+            .country-name {
+                font-size: 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <!-- Brand Section -->
+                <div class="brand">
+                    <h1>🌍 CountryScope</h1>
+                    <p>Explore the world's countries, cultures, and destinations</p>
+                </div>
+                
+                <!-- Search and Filter Controls -->
+                <div class="controls">
+                    <input 
+                        type="text" 
+                        class="search-box" 
+                        placeholder="🔍 Search countries..." 
+                        id="searchInput"
+                        aria-label="Search countries"
+                    >
+                    <select class="filter-select" id="regionFilter" aria-label="Filter by region">
+                        <option value="">🌐 All Regions</option>
+                        <option value="Africa">🌍 Africa</option>
+                        <option value="Americas">🌎 Americas</option>
+                        <option value="Asia">🌏 Asia</option>
+                        <option value="Europe">🇪🇺 Europe</option>
+                        <option value="Oceania">🏝️ Oceania</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Statistics Section -->
+        <section class="stats" id="statsSection" style="display: none;">
+            <div class="stats-content">
+                <div class="stat-item">
+                    <span class="stat-number" id="totalCountries">0</span>
+                    <div class="stat-label">Countries Displayed</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="totalPopulation">0</span>
+                    <div class="stat-label">Total Population</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="averagePopulation">0</span>
+                    <div class="stat-label">Avg Population</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Loading Indicator -->
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p>Loading amazing countries data...</p>
+        </div>
+
+        <!-- Countries Grid -->
+        <section class="countries-grid" id="countriesGrid" aria-label="Countries list"></section>
+
+        <!-- No Results Message -->
+        <div class="no-results" id="noResults" style="display: none;">
+            <h3>🔍 No Countries Found</h3>
+            <p>Try adjusting your search terms or filter settings</p>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 <a href="https://int.vinnesia.my.id" rel="noopener">CountryScope</a> - Your Gateway to World Geography & Travel</p>
+            <p>Data powered by <a href="https://restcountries.com" target="_blank" rel="noopener">REST Countries API</a></p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Global Variables
+        let allCountries = [];
+        let filteredCountries = [];
+        
+        // DOM Elements
+        const searchInput = document.getElementById('searchInput');
+        const regionFilter = document.getElementById('regionFilter');
+        const countriesGrid = document.getElementById('countriesGrid');
+        const loading = document.getElementById('loading');
+        const noResults = document.getElementById('noResults');
+        const statsSection = document.getElementById('statsSection');
+        const totalCountriesEl = document.getElementById('totalCountries');
+        const totalPopulationEl = document.getElementById('totalPopulation');
+        const averagePopulationEl = document.getElementById('averagePopulation');
+        
+        // API Configuration - Multiple endpoints for reliability
+        const API_URLS = [
+            'https://restcountries.com/v3.1/all?fields=name,capital,population,region,flags,cca3',
+            'https://restcountries.com/v3.1/all',
+            'https://restcountries.com/v2/all?fields=name,capital,population,region,flag,alpha3Code'
+        ];
+        
+        // Initialize Application
+        document.addEventListener('DOMContentLoaded', initApp);
+        
+        async function initApp() {
+            try {
+                loading.style.display = 'block';
+                await fetchCountries();
+                setupEventListeners();
+                renderCountries(allCountries);
+                updateStats(allCountries);
+                hideLoading();
+            } catch (error) {
+                console.error('Failed to initialize app:', error);
+                showError('Unable to load countries data. Please check your internet connection and try again.');
+            }
+        }
+        
+        // Fetch Countries Data from API with fallback URLs
+        async function fetchCountries() {
+            let lastError;
+            
+            // Try each API endpoint until one works
+            for (let i = 0; i < API_URLS.length; i++) {
+                try {
+                    console.log(`Trying API endpoint ${i + 1}:`, API_URLS[i]);
+                    
+                    const controller = new AbortController();
+                    const timeoutId = setTimeout(() => controller.abort(), 10000); // 10s timeout
+                    
+                    const response = await fetch(API_URLS[i], {
+                        method: 'GET',
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json',
+                        },
+                        signal: controller.signal
+                    });
+                    
+                    clearTimeout(timeoutId);
+                    
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    
+                    const data = await response.json();
+                    console.log('Successfully fetched data:', data.length, 'countries');
+                    
+                    // Process data based on API version
+                    if (i === 2) {
+                        // REST Countries v2 format
+                        allCountries = data.map(country => ({
+                            name: country.name || 'Unknown',
+                            capital: country.capital || 'No capital',
+                            population: country.population || 0,
+                            region: country.region || 'Unknown',
+                            flag: country.flag || '',
+                            code: country.alpha3Code || ''
+                        }));
+                    } else {
+                        // REST Countries v3 format
+                        allCountries = data.map(country => ({
+                            name: country.name?.common || country.name || 'Unknown',
+                            capital: Array.isArray(country.capital) ? country.capital[0] : (country.capital || 'No capital'),
+                            population: country.population || 0,
+                            region: country.region || 'Unknown',
+                            flag: country.flags?.png || country.flags?.svg || country.flag || '',
+                            code: country.cca3 || country.alpha3Code || ''
+                        }));
+                    }
+                    
+                    // Sort alphabetically
+                    allCountries.sort((a, b) => a.name.localeCompare(b.name));
+                    filteredCountries = [...allCountries];
+                    
+                    return; // Success, exit the loop
+                    
+                } catch (error) {
+                    console.error(`API endpoint ${i + 1} failed:`, error.message);
+                    lastError = error;
+                    
+                    if (i === API_URLS.length - 1) {
+                        // If all APIs fail, use fallback data
+                        console.log('All APIs failed, using fallback data');
+                        useFallbackData();
+                        return;
+                    }
+                    
+                    // Wait before trying next endpoint
+                    await new Promise(resolve => setTimeout(resolve, 1000));
+                }
+            }
+        }
+        
+        // Fallback data in case all APIs fail
+        function useFallbackData() {
+            allCountries = [
+                {
+                    name: 'Indonesia',
+                    capital: 'Jakarta',
+                    population: 273523615,
+                    region: 'Asia',
+                    flag: 'https://flagcdn.com/w320/id.png',
+                    code: 'IDN'
+                },
+                {
+                    name: 'United States',
+                    capital: 'Washington D.C.',
+                    population: 331002651,
+                    region: 'Americas',
+                    flag: 'https://flagcdn.com/w320/us.png',
+                    code: 'USA'
+                },
+                {
+                    name: 'Japan',
+                    capital: 'Tokyo',
+                    population: 125836021,
+                    region: 'Asia',
+                    flag: 'https://flagcdn.com/w320/jp.png',
+                    code: 'JPN'
+                },
+                {
+                    name: 'Germany',
+                    capital: 'Berlin',
+                    population: 83783942,
+                    region: 'Europe',
+                    flag: 'https://flagcdn.com/w320/de.png',
+                    code: 'DEU'
+                },
+                {
+                    name: 'Australia',
+                    capital: 'Canberra',
+                    population: 25499884,
+                    region: 'Oceania',
+                    flag: 'https://flagcdn.com/w320/au.png',
+                    code: 'AUS'
+                },
+                {
+                    name: 'Brazil',
+                    capital: 'Brasília',
+                    population: 212559417,
+                    region: 'Americas',
+                    flag: 'https://flagcdn.com/w320/br.png',
+                    code: 'BRA'
+                },
+                {
+                    name: 'Nigeria',
+                    capital: 'Abuja',
+                    population: 206139589,
+                    region: 'Africa',
+                    flag: 'https://flagcdn.com/w320/ng.png',
+                    code: 'NGA'
+                },
+                {
+                    name: 'United Kingdom',
+                    capital: 'London',
+                    population: 67886011,
+                    region: 'Europe',
+                    flag: 'https://flagcdn.com/w320/gb.png',
+                    code: 'GBR'
+                }
+            ];
+            
+            filteredCountries = [...allCountries];
+            console.log('Using fallback data with', allCountries.length, 'countries');
+        }
+        
+        // Setup Event Listeners
+        function setupEventListeners() {
+            // Real-time search with debouncing
+            let searchTimeout;
+            searchInput.addEventListener('input', (e) => {
+                clearTimeout(searchTimeout);
+                searchTimeout = setTimeout(() => {
+                    filterCountries();
+                }, 300);
+            });
+            
+            // Region filter
+            regionFilter.addEventListener('change', filterCountries);
+        }
+        
+        // Filter Countries based on search and region
+        function filterCountries() {
+            const searchTerm = searchInput.value.toLowerCase().trim();
+            const selectedRegion = regionFilter.value;
+            
+            filteredCountries = allCountries.filter(country => {
+                const matchesSearch = !searchTerm || 
+                    country.name.toLowerCase().includes(searchTerm) ||
+                    country.capital.toLowerCase().includes(searchTerm) ||
+                    country.region.toLowerCase().includes(searchTerm);
+                
+                const matchesRegion = !selectedRegion || country.region === selectedRegion;
+                
+                return matchesSearch && matchesRegion;
+            });
+            
+            renderCountries(filteredCountries);
+            updateStats(filteredCountries);
+        }
+        
+        // Render Countries Grid
+        function renderCountries(countries) {
+            if (countries.length === 0) {
+                countriesGrid.innerHTML = '';
+                showNoResults();
+                return;
+            }
+            
+            hideNoResults();
+            
+            // Use DocumentFragment for better performance
+            const fragment = document.createDocumentFragment();
+            
+            countries.forEach(country => {
+                const countryCard = createCountryCard(country);
+                fragment.appendChild(countryCard);
+            });
+            
+            countriesGrid.innerHTML = '';
+            countriesGrid.appendChild(fragment);
+        }
+        
+        // Create Individual Country Card
+        function createCountryCard(country) {
+            const card = document.createElement('article');
+            card.className = 'country-card';
+            card.setAttribute('data-country', country.code);
+            
+            // Format population with commas
+            const formattedPopulation = country.population.toLocaleString();
+            
+            card.innerHTML = `
+                <div class="flag-container">
+                    <img 
+                        src="${country.flag}" 
+                        alt="Flag of ${country.name}" 
+                        class="flag"
+                        loading="lazy"
+                        onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\\'http://www.w3.org/2000/svg\\' viewBox=\\'0 0 300 200\\'%3E%3Crect fill=\\'%23f0f0f0\\' width=\\'300\\' height=\\'200\\'/%3E%3Ctext x=\\'150\\' y=\\'100\\' text-anchor=\\'middle\\' font-family=\\'Arial\\' font-size=\\'14\\' fill=\\'%23666\\'%3ENo Flag%3C/text%3E%3C/svg%3E'"
+                    >
+                </div>
+                <div class="country-info">
+                    <h2 class="country-name">${country.name}</h2>
+                    <div class="info-item">
+                        <span class="info-label">Capital:</span>
+                        <span class="info-value">${country.capital}</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Population:</span>
+                        <span class="info-value">${formattedPopulation}</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Region:</span>
+                        <span class="info-value">
+                            <span class="region-badge">${country.region}</span>
+                        </span>
+                    </div>
+                </div>
+            `;
+            
+            // Add click event for potential future expansion
+            card.addEventListener('click', () => {
+                console.log(`Clicked on ${country.name}`);
+                // Future: Show detailed modal or navigate to country page
+            });
+            
+            return card;
+        }
+        
+        // Update Statistics
+        function updateStats(countries) {
+            const total = countries.length;
+            const totalPop = countries.reduce((sum, country) => sum + country.population, 0);
+            const avgPop = total > 0 ? Math.round(totalPop / total) : 0;
+            
+            totalCountriesEl.textContent = total.toLocaleString();
+            totalPopulationEl.textContent = formatLargeNumber(totalPop);
+            averagePopulationEl.textContent = formatLargeNumber(avgPop);
+            
+            statsSection.style.display = 'block';
+        }
+        
+        // Format Large Numbers (e.g., 1.2B, 45.6M)
+        function formatLargeNumber(num) {
+            if (num >= 1e9) return (num / 1e9).toFixed(1) + 'B';
+            if (num >= 1e6) return (num / 1e6).toFixed(1) + 'M';
+            if (num >= 1e3) return (num / 1e3).toFixed(1) + 'K';
+            return num.toLocaleString();
+        }
+        
+        // UI Helper Functions
+        function hideLoading() {
+            loading.style.display = 'none';
+        }
+        
+        function showNoResults() {
+            noResults.style.display = 'block';
+        }
+        
+        function hideNoResults() {
+            noResults.style.display = 'none';
+        }
+        
+        function showError(message) {
+            loading.innerHTML = `
+                <div style="color: #ff6b6b; text-align: center;">
+                    <h3>⚠️ Connection Issue</h3>
+                    <p>${message}</p>
+                    <button onclick="location.reload()" style="
+                        background: #667eea; 
+                        color: white; 
+                        border: none; 
+                        padding: 0.75rem 1.5rem; 
+                        border-radius: 25px; 
+                        cursor: pointer; 
+                        margin-top: 1rem;
+                        font-size: 1rem;
+                    ">
+                        🔄 Try Again
+                    </button>
+                </div>
+            `;
+        }
+        
+        // Performance Optimization: Lazy Loading Images
+        if ('IntersectionObserver' in window) {
+            const imageObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src;
+                        img.classList.remove('lazy');
+                        imageObserver.unobserve(img);
+                    }
+                });
+            });
+        }
+        
+        // Add to search URL parameters for better SEO
+        function updateURLParams() {
+            const params = new URLSearchParams();
+            if (searchInput.value) params.set('search', searchInput.value);
+            if (regionFilter.value) params.set('region', regionFilter.value);
+            
+            const newURL = window.location.pathname + (params.toString() ? '?' + params.toString() : '');
+            window.history.replaceState({}, '', newURL);
+        }
+        
+        // Load URL parameters on page load
+        function loadURLParams() {
+            const params = new URLSearchParams(window.location.search);
+            const search = params.get('search');
+            const region = params.get('region');
+            
+            if (search) searchInput.value = search;
+            if (region) regionFilter.value = region;
+        }
+        
+        // Initialize URL parameters
+        loadURLParams();
+        
+        // Service Worker Registration for PWA capabilities
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => console.log('SW registered'))
+                    .catch(registrationError => console.log('SW registration failed'));
+            });
+        }
+    </script>
+    
+    <!-- Schema.org Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "CountryScope",
+        "description": "Comprehensive world countries explorer with flags, population data, capitals, and travel information",
+        "url": "https://int.vinnesia.my.id",
+        "applicationCategory": "EducationApplication",
+        "operatingSystem": "Any",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "featureList": [
+            "Country search and filtering",
+            "Population statistics",
+            "Flag galleries",
+            "Capital city information",
+            "Regional data exploration"
+        ]
+    }
+    </script>
+</body>
+</html>
