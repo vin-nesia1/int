@@ -483,6 +483,17 @@
             text-decoration: none;
         }
         
+        /* Notification animations */
+        @keyframes slideDown {
+            from { transform: translate(-50%, -100%); opacity: 0; }
+            to { transform: translate(-50%, 0); opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from { transform: translate(-50%, 0); opacity: 1; }
+            to { transform: translate(-50%, -100%); opacity: 0; }
+        }
+        
         /* Responsive Design */
         @media (max-width: 768px) {
             .brand h1 {
@@ -701,7 +712,8 @@
         // API Configuration - Multiple endpoints for reliability
         const API_URLS = [
             'https://restcountries.com/v3.1/all',
-            'https://restcountries.com/v2/all'
+            'https://country-api-henna.vercel.app/countries',
+            'https://worldcountries-api.herokuapp.com/countries'
         ];
         
         // Initialize Application
@@ -725,68 +737,77 @@
         async function fetchCountries() {
             let lastError;
             
+            // First, try to use cached data if available
+            const cachedData = localStorage.getItem('countriesData');
+            if (cachedData) {
+                try {
+                    const data = JSON.parse(cachedData);
+                    if (data.timestamp && Date.now() - data.timestamp < 24 * 60 * 60 * 1000) { // 24 hours
+                        allCountries = data.countries;
+                        filteredCountries = [...allCountries];
+                        console.log('Using cached data:', allCountries.length, 'countries');
+                        return;
+                    }
+                } catch (e) {
+                    localStorage.removeItem('countriesData');
+                }
+            }
+            
             // Try each API endpoint until one works
             for (let i = 0; i < API_URLS.length; i++) {
                 try {
                     console.log(`Trying API endpoint ${i + 1}:`, API_URLS[i]);
                     
                     const controller = new AbortController();
-                    const timeoutId = setTimeout(() => controller.abort(), 10000); // 10s timeout
+                    const timeoutId = setTimeout(() => controller.abort(), 15000); // 15s timeout
                     
                     const response = await fetch(API_URLS[i], {
                         method: 'GET',
                         headers: {
                             'Accept': 'application/json',
-                            'Content-Type': 'application/json',
+                            'User-Agent': 'CountryScope/1.0'
                         },
-                        signal: controller.signal
+                        signal: controller.signal,
+                        mode: 'cors'
                     });
                     
                     clearTimeout(timeoutId);
                     
                     if (!response.ok) {
-                        throw new Error(`HTTP error! status: ${response.status}`);
+                        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
                     }
                     
                     const data = await response.json();
                     console.log('Successfully fetched data:', data.length, 'countries');
                     
-                    // Process data based on API version
-                    if (i === 1) {
-                        // REST Countries v2 format
-                        allCountries = data.map(country => ({
-                            name: country.name || 'Unknown',
-                            officialName: country.nativeName || country.name || 'Unknown',
-                            capital: country.capital || 'No capital',
-                            population: country.population || 0,
-                            region: country.region || 'Unknown',
-                            subregion: country.subregion || 'Unknown',
-                            area: country.area || 0,
-                            flag: country.flag || '',
-                            code: country.alpha3Code || '',
-                            languages: country.languages || [],
-                            currencies: country.currencies || []
-                        }));
-                    } else {
-                        // REST Countries v3 format
-                        allCountries = data.map(country => ({
-                            name: country.name?.common || 'Unknown',
-                            officialName: country.name?.official || country.name?.common || 'Unknown',
-                            capital: Array.isArray(country.capital) ? country.capital[0] : (country.capital || 'No capital'),
-                            population: country.population || 0,
-                            region: country.region || 'Unknown',
-                            subregion: country.subregion || 'Unknown',
-                            area: country.area || 0,
-                            flag: country.flags?.png || country.flags?.svg || '',
-                            code: country.cca3 || '',
-                            languages: country.languages || {},
-                            currencies: country.currencies || {}
-                        }));
-                    }
+                    // Process data - assume all APIs return similar v3 format
+                    allCountries = data.map(country => ({
+                        name: country.name?.common || country.name || 'Unknown',
+                        officialName: country.name?.official || country.name?.common || country.name || 'Unknown',
+                        capital: Array.isArray(country.capital) ? country.capital[0] : (country.capital || 'No capital'),
+                        population: country.population || 0,
+                        region: country.region || 'Unknown',
+                        subregion: country.subregion || 'Unknown',
+                        area: country.area || 0,
+                        flag: country.flags?.png || country.flags?.svg || country.flag || '',
+                        code: country.cca3 || country.alpha3Code || country.code || '',
+                        languages: country.languages || {},
+                        currencies: country.currencies || {}
+                    })).filter(country => country.name !== 'Unknown');
                     
                     // Sort alphabetically
                     allCountries.sort((a, b) => a.name.localeCompare(b.name));
                     filteredCountries = [...allCountries];
+                    
+                    // Cache successful data
+                    try {
+                        localStorage.setItem('countriesData', JSON.stringify({
+                            countries: allCountries,
+                            timestamp: Date.now()
+                        }));
+                    } catch (e) {
+                        console.warn('Could not cache data:', e.message);
+                    }
                     
                     return; // Success, exit the loop
                     
@@ -794,20 +815,19 @@
                     console.error(`API endpoint ${i + 1} failed:`, error.message);
                     lastError = error;
                     
-                    if (i === API_URLS.length - 1) {
-                        // If all APIs fail, use fallback data
-                        console.log('All APIs failed, using fallback data');
-                        useFallbackData();
-                        return;
+                    if (i < API_URLS.length - 1) {
+                        // Wait before trying next endpoint
+                        await new Promise(resolve => setTimeout(resolve, 2000));
                     }
-                    
-                    // Wait before trying next endpoint
-                    await new Promise(resolve => setTimeout(resolve, 1000));
                 }
             }
+            
+            // If all APIs fail, use fallback data
+            console.log('All APIs failed, using fallback data');
+            useFallbackData();
         }
         
-        // Fallback data in case all APIs fail
+        // Fallback data in case all APIs fail - Extended with more countries
         function useFallbackData() {
             allCountries = [
                 {
@@ -826,7 +846,7 @@
                 {
                     name: 'United States',
                     officialName: 'United States of America',
-                    capital: 'Washington D.C.',
+                    capital: 'Washington, D.C.',
                     population: 331002651,
                     region: 'Americas',
                     subregion: 'Northern America',
@@ -835,6 +855,58 @@
                     code: 'USA',
                     languages: { eng: 'English' },
                     currencies: { USD: { name: 'United States dollar', symbol: '$' } }
+                },
+                {
+                    name: 'China',
+                    officialName: 'People\'s Republic of China',
+                    capital: 'Beijing',
+                    population: 1439323776,
+                    region: 'Asia',
+                    subregion: 'Eastern Asia',
+                    area: 9596960,
+                    flag: 'https://flagcdn.com/w320/cn.png',
+                    code: 'CHN',
+                    languages: { zho: 'Chinese' },
+                    currencies: { CNY: { name: 'Chinese yuan', symbol: '¥' } }
+                },
+                {
+                    name: 'India',
+                    officialName: 'Republic of India',
+                    capital: 'New Delhi',
+                    population: 1380004385,
+                    region: 'Asia',
+                    subregion: 'Southern Asia',
+                    area: 3287263,
+                    flag: 'https://flagcdn.com/w320/in.png',
+                    code: 'IND',
+                    languages: { hin: 'Hindi', eng: 'English' },
+                    currencies: { INR: { name: 'Indian rupee', symbol: '₹' } }
+                },
+                {
+                    name: 'Brazil',
+                    officialName: 'Federative Republic of Brazil',
+                    capital: 'Brasília',
+                    population: 212559417,
+                    region: 'Americas',
+                    subregion: 'South America',
+                    area: 8515767,
+                    flag: 'https://flagcdn.com/w320/br.png',
+                    code: 'BRA',
+                    languages: { por: 'Portuguese' },
+                    currencies: { BRL: { name: 'Brazilian real', symbol: 'R$' } }
+                },
+                {
+                    name: 'Russia',
+                    officialName: 'Russian Federation',
+                    capital: 'Moscow',
+                    population: 145934462,
+                    region: 'Europe',
+                    subregion: 'Eastern Europe',
+                    area: 17098246,
+                    flag: 'https://flagcdn.com/w320/ru.png',
+                    code: 'RUS',
+                    languages: { rus: 'Russian' },
+                    currencies: { RUB: { name: 'Russian ruble', symbol: '₽' } }
                 },
                 {
                     name: 'Japan',
@@ -863,6 +935,45 @@
                     currencies: { EUR: { name: 'Euro', symbol: '€' } }
                 },
                 {
+                    name: 'United Kingdom',
+                    officialName: 'United Kingdom of Great Britain and Northern Ireland',
+                    capital: 'London',
+                    population: 67886011,
+                    region: 'Europe',
+                    subregion: 'Northern Europe',
+                    area: 242495,
+                    flag: 'https://flagcdn.com/w320/gb.png',
+                    code: 'GBR',
+                    languages: { eng: 'English' },
+                    currencies: { GBP: { name: 'British pound', symbol: '£' } }
+                },
+                {
+                    name: 'France',
+                    officialName: 'French Republic',
+                    capital: 'Paris',
+                    population: 65273511,
+                    region: 'Europe',
+                    subregion: 'Western Europe',
+                    area: 640679,
+                    flag: 'https://flagcdn.com/w320/fr.png',
+                    code: 'FRA',
+                    languages: { fra: 'French' },
+                    currencies: { EUR: { name: 'Euro', symbol: '€' } }
+                },
+                {
+                    name: 'Canada',
+                    officialName: 'Canada',
+                    capital: 'Ottawa',
+                    population: 37742154,
+                    region: 'Americas',
+                    subregion: 'Northern America',
+                    area: 9984670,
+                    flag: 'https://flagcdn.com/w320/ca.png',
+                    code: 'CAN',
+                    languages: { eng: 'English', fra: 'French' },
+                    currencies: { CAD: { name: 'Canadian dollar', symbol: '$' } }
+                },
+                {
                     name: 'Australia',
                     officialName: 'Commonwealth of Australia',
                     capital: 'Canberra',
@@ -874,19 +985,6 @@
                     code: 'AUS',
                     languages: { eng: 'English' },
                     currencies: { AUD: { name: 'Australian dollar', symbol: '$' } }
-                },
-                {
-                    name: 'Brazil',
-                    officialName: 'Federative Republic of Brazil',
-                    capital: 'Brasília',
-                    population: 212559417,
-                    region: 'Americas',
-                    subregion: 'South America',
-                    area: 8515767,
-                    flag: 'https://flagcdn.com/w320/br.png',
-                    code: 'BRA',
-                    languages: { por: 'Portuguese' },
-                    currencies: { BRL: { name: 'Brazilian real', symbol: 'R$' } }
                 },
                 {
                     name: 'Nigeria',
@@ -902,22 +1000,64 @@
                     currencies: { NGN: { name: 'Nigerian naira', symbol: '₦' } }
                 },
                 {
-                    name: 'United Kingdom',
-                    officialName: 'United Kingdom of Great Britain and Northern Ireland',
-                    capital: 'London',
-                    population: 67886011,
-                    region: 'Europe',
-                    subregion: 'Northern Europe',
-                    area: 242495,
-                    flag: 'https://flagcdn.com/w320/gb.png',
-                    code: 'GBR',
-                    languages: { eng: 'English' },
-                    currencies: { GBP: { name: 'British pound', symbol: '£' } }
+                    name: 'South Africa',
+                    officialName: 'Republic of South Africa',
+                    capital: 'Cape Town',
+                    population: 59308690,
+                    region: 'Africa',
+                    subregion: 'Southern Africa',
+                    area: 1221037,
+                    flag: 'https://flagcdn.com/w320/za.png',
+                    code: 'ZAF',
+                    languages: { eng: 'English', afr: 'Afrikaans' },
+                    currencies: { ZAR: { name: 'South African rand', symbol: 'R' } }
+                },
+                {
+                    name: 'Egypt',
+                    officialName: 'Arab Republic of Egypt',
+                    capital: 'Cairo',
+                    population: 102334404,
+                    region: 'Africa',
+                    subregion: 'Northern Africa',
+                    area: 1002450,
+                    flag: 'https://flagcdn.com/w320/eg.png',
+                    code: 'EGY',
+                    languages: { ara: 'Arabic' },
+                    currencies: { EGP: { name: 'Egyptian pound', symbol: '£' } }
                 }
             ];
             
             filteredCountries = [...allCountries];
             console.log('Using fallback data with', allCountries.length, 'countries');
+            
+            // Show notification that we're using offline data
+            showOfflineNotification();
+        }
+        
+        // Show offline notification
+        function showOfflineNotification() {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: #ff9800;
+                color: white;
+                padding: 1rem 2rem;
+                border-radius: 25px;
+                z-index: 3000;
+                font-weight: 600;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+                animation: slideDown 0.5s ease;
+            `;
+            notification.innerHTML = '📱 Offline Mode: Showing limited country data';
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.animation = 'slideUp 0.5s ease forwards';
+                setTimeout(() => notification.remove(), 500);
+            }, 4000);
         }
         
         // Setup Event Listeners
