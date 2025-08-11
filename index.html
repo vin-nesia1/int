@@ -1,55 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Basic Meta Tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>WorldScope News - Latest International News, Countries & World Updates</title>
     
     <!-- SEO Meta Tags -->
-    <title>CountryScope - Explore World Countries, Flags, Population & Travel Information</title>
-    <meta name="description" content="Discover comprehensive information about 195+ countries worldwide. Explore flags, population data, capitals, regions, and travel destinations. Your ultimate guide to world geography and tourism.">
-    <meta name="keywords" content="countries, world flags, population data, capitals, travel destinations, geography, tourism, world atlas, country information, global statistics">
-    <meta name="author" content="CountryScope - int.vinnesia.my.id">
+    <meta name="description" content="Stay updated with latest international news from around the world. Explore countries, flags, population data, capitals, and global updates from all continents - Asia, Europe, Africa, Americas, Oceania.">
+    <meta name="keywords" content="international news, world news, countries, flags, population, capitals, global news, Asia news, Europe news, Africa news, Americas news, Oceania news, tourism, world updates">
+    <meta name="author" content="WorldScope News">
     <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="WorldScope News - Latest International News & Countries Data">
+    <meta property="og:description" content="Comprehensive international news coverage with detailed country information including flags, population, capitals, and regional data.">
+    <meta property="og:url" content="https://int.vinnesia.my.id">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="WorldScope News">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="WorldScope News - International News & Countries">
+    <meta name="twitter:description" content="Latest world news with comprehensive country data and regional insights.">
+    
+    <!-- Canonical URL -->
     <link rel="canonical" href="https://int.vinnesia.my.id">
     
-    <!-- Open Graph Tags -->
-    <meta property="og:title" content="CountryScope - Explore World Countries & Travel Information">
-    <meta property="og:description" content="Comprehensive database of world countries with flags, population, capitals and travel insights. Perfect for geography enthusiasts and travelers.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://int.vinnesia.my.id">
-    <meta property="og:image" content="https://int.vinnesia.my.id/og-image.jpg">
-    <meta property="og:site_name" content="CountryScope">
-    
-    <!-- Twitter Card Tags -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="CountryScope - World Countries Explorer">
-    <meta name="twitter:description" content="Explore 195+ countries with detailed information, flags, population data, and travel insights.">
-    <meta name="twitter:image" content="https://int.vinnesia.my.id/twitter-image.jpg">
-    
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23007bff'/%3E%3Ctext x='50' y='60' font-family='Arial' font-size='40' font-weight='bold' text-anchor='middle' fill='white'%3E🌍%3C/text%3E%3C/svg%3E">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌍</text></svg>">
     
-    <!-- Structured Data -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "CountryScope",
-        "description": "Comprehensive world countries database with flags, population, capitals and travel information",
-        "url": "https://int.vinnesia.my.id",
-        "potentialAction": {
-            "@type": "SearchAction",
-            "target": "https://int.vinnesia.my.id?search={search_term_string}",
-            "query-input": "required name=search_term_string"
-        }
-    }
-    </script>
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://restcountries.com">
     
-    <!-- Critical CSS -->
     <style>
-        /* CSS Reset & Base Styles */
+        /* Reset and Base Styles */
         * {
             margin: 0;
             padding: 0;
@@ -57,483 +41,336 @@
         }
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
             color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
+            background-color: #f8f9fa;
         }
         
         /* Header Styles */
         .header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             position: sticky;
             top: 0;
             z-index: 1000;
-            padding: 1rem 0;
         }
         
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 1rem;
+            padding: 0 20px;
         }
         
         .header-content {
             display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-        
-        .brand {
-            text-align: center;
-        }
-        
-        .brand h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 0.5rem;
-        }
-        
-        .brand p {
-            color: #666;
-            font-size: 1.1rem;
-        }
-        
-        /* Controls Styles */
-        .controls {
-            display: flex;
+            justify-content: space-between;
+            align-items: center;
             flex-wrap: wrap;
             gap: 1rem;
-            justify-content: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .tagline {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-top: 0.25rem;
+        }
+        
+        /* Search and Filter Controls */
+        .controls {
+            background: white;
+            padding: 1.5rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .controls-inner {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
             align-items: center;
         }
         
         .search-box, .filter-select {
             padding: 0.75rem 1rem;
-            border: 2px solid #e1e5e9;
-            border-radius: 25px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
             font-size: 1rem;
-            outline: none;
-            transition: all 0.3s ease;
-            background: white;
+            transition: border-color 0.3s ease;
         }
         
         .search-box {
-            width: 300px;
-            max-width: 100%;
+            flex: 1;
+            min-width: 250px;
         }
         
         .search-box:focus, .filter-select:focus {
+            outline: none;
             border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
         }
         
         .filter-select {
             min-width: 150px;
-            cursor: pointer;
+            background: white;
         }
         
-        /* Stats Styles */
-        .stats {
-            background: rgba(255, 255, 255, 0.9);
-            padding: 1rem;
-            margin: 2rem 0;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .stats-content {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 2rem;
-        }
-        
-        .stat-item {
-            text-align: center;
-        }
-        
-        .stat-number {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #667eea;
-            display: block;
-        }
-        
-        .stat-label {
-            color: #666;
-            font-size: 0.9rem;
-            margin-top: 0.25rem;
-        }
-        
-        /* Loading Styles */
+        /* Loading Spinner */
         .loading {
-            text-align: center;
-            padding: 3rem 1rem;
-            color: white;
-            font-size: 1.2rem;
-        }
-        
-        .spinner {
-            width: 50px;
-            height: 50px;
-            border: 4px solid rgba(255, 255, 255, 0.3);
-            border-top: 4px solid white;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 1rem;
-        }
-        
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-        
-        /* Countries Grid */
-        .countries-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
-            padding: 2rem 0;
-        }
-        
-        /* Country Card Styles */
-        .country-card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-        
-        .country-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-        }
-        
-        .flag-container {
-            position: relative;
-            height: 200px;
-            overflow: hidden;
-        }
-        
-        .flag {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-        
-        .country-card:hover .flag {
-            transform: scale(1.05);
-        }
-        
-        .country-info {
-            padding: 1.5rem;
-        }
-        
-        .country-name {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #333;
-            margin-bottom: 1rem;
-            line-height: 1.2;
-        }
-        
-        .info-item {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.5rem 0;
-            border-bottom: 1px solid #f0f0f0;
-        }
-        
-        .info-item:last-child {
-            border-bottom: none;
-        }
-        
-        .info-label {
-            font-weight: 600;
-            color: #555;
-        }
-        
-        .info-value {
-            color: #777;
-            text-align: right;
-        }
-        
-        .region-badge {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-        }
-        
-        /* No Results */
-        .no-results {
-            text-align: center;
-            padding: 3rem 1rem;
-            color: white;
-        }
-        
-        .no-results h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-        
-        /* Modal Styles */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 2000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(5px);
-        }
-        
-        .modal-content {
-            background: white;
-            margin: 5% auto;
-            padding: 0;
-            border-radius: 20px;
-            width: 90%;
-            max-width: 600px;
-            max-height: 85vh;
-            overflow-y: auto;
-            position: relative;
-            animation: modalSlideIn 0.3s ease;
-        }
-        
-        @keyframes modalSlideIn {
-            from { transform: translateY(-50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-        
-        .modal-header {
-            position: relative;
-            height: 250px;
-            overflow: hidden;
-            border-radius: 20px 20px 0 0;
-        }
-        
-        .modal-flag {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .modal-close {
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            background: rgba(0, 0, 0, 0.7);
-            color: white;
-            border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            font-size: 1.5rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
             justify-content: center;
-            transition: all 0.3s ease;
-        }
-        
-        .modal-close:hover {
-            background: rgba(0, 0, 0, 0.9);
-            transform: scale(1.1);
-        }
-        
-        .modal-body {
+            align-items: center;
             padding: 2rem;
         }
         
-        .modal-country-name {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #333;
-            margin-bottom: 1rem;
-            text-align: center;
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
         }
         
-        .modal-info-grid {
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* News Grid */
+        .news-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            padding: 2rem 0;
         }
         
-        .modal-info-section {
-            background: #f8f9ff;
-            padding: 1.5rem;
-            border-radius: 15px;
-            border-left: 4px solid #667eea;
-        }
-        
-        .modal-section-title {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: #333;
-            margin-bottom: 1rem;
+        /* News Article Card */
+        .news-article {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             display: flex;
-            align-items: center;
-            gap: 0.5rem;
+            flex-direction: column;
         }
         
-        .modal-info-item {
+        .news-article:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .article-content {
+            padding: 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .article-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: #2c3e50;
+            line-height: 1.4;
+        }
+        
+        .article-summary {
+            color: #666;
+            margin-bottom: 1rem;
+            flex: 1;
+            line-height: 1.6;
+        }
+        
+        .article-meta {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0.75rem 0;
-            border-bottom: 1px solid #e1e5e9;
+            font-size: 0.9rem;
+            color: #888;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
         }
         
-        .modal-info-item:last-child {
-            border-bottom: none;
-        }
-        
-        .modal-info-label {
-            font-weight: 600;
-            color: #555;
-        }
-        
-        .modal-info-value {
-            color: #333;
+        .article-date {
             font-weight: 500;
-            text-align: right;
         }
         
-        .modal-languages {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-        
-        .language-tag {
-            background: #667eea;
-            color: white;
-            padding: 0.25rem 0.75rem;
+        .article-location {
+            background: #e8f4fd;
+            color: #1976d2;
+            padding: 0.25rem 0.5rem;
             border-radius: 15px;
-            font-size: 0.85rem;
-            font-weight: 600;
+            font-size: 0.8rem;
+            font-weight: 500;
         }
         
-        .modal-currencies {
+        /* Country Info Section */
+        .country-info {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-top: 1px solid #e0e0e0;
+            padding: 1.5rem;
+        }
+        
+        .country-header {
             display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
         }
         
-        .currency-tag {
-            background: #764ba2;
-            color: white;
-            padding: 0.25rem 0.75rem;
-            border-radius: 15px;
-            font-size: 0.85rem;
+        .country-flag {
+            width: 40px;
+            height: 30px;
+            object-fit: cover;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .country-name {
             font-weight: 600;
+            color: #2c3e50;
+            font-size: 1.1rem;
         }
         
-        /* Mobile Modal Styles */
-        @media (max-width: 768px) {
-            .modal-content {
-                width: 95%;
-                margin: 2% auto;
-                max-height: 95vh;
-            }
-            
-            .modal-country-name {
-                font-size: 2rem;
-            }
-            
-            .modal-info-grid {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-            
-            .modal-body {
-                padding: 1.5rem;
-            }
+        .country-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 0.75rem;
+        }
+        
+        .country-detail {
+            text-align: center;
+            padding: 0.5rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .detail-label {
+            font-size: 0.8rem;
+            color: #666;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .detail-value {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0.25rem;
+            font-size: 0.9rem;
+        }
+        
+        /* No Results Message */
+        .no-results {
+            text-align: center;
+            padding: 3rem 1rem;
+            color: #666;
+        }
+        
+        .no-results-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            opacity: 0.5;
         }
         
         /* Footer */
         .footer {
-            background: rgba(0, 0, 0, 0.8);
+            background: #2c3e50;
             color: white;
             text-align: center;
             padding: 2rem 1rem;
             margin-top: 3rem;
         }
         
+        .footer p {
+            margin-bottom: 0.5rem;
+        }
+        
         .footer a {
-            color: #667eea;
+            color: #74b9ff;
             text-decoration: none;
         }
         
-        /* Notification animations */
-        @keyframes slideDown {
-            from { transform: translate(-50%, -100%); opacity: 0; }
-            to { transform: translate(-50%, 0); opacity: 1; }
-        }
-        
-        @keyframes slideUp {
-            from { transform: translate(-50%, 0); opacity: 1; }
-            to { transform: translate(-50%, -100%); opacity: 0; }
+        .footer a:hover {
+            text-decoration: underline;
         }
         
         /* Responsive Design */
         @media (max-width: 768px) {
-            .brand h1 {
-                font-size: 2rem;
+            .header-content {
+                flex-direction: column;
+                text-align: center;
             }
             
-            .controls {
+            .controls-inner {
                 flex-direction: column;
-                align-items: stretch;
             }
             
             .search-box, .filter-select {
                 width: 100%;
             }
             
-            .countries-grid {
+            .news-grid {
                 grid-template-columns: 1fr;
-                gap: 1rem;
+                gap: 1.5rem;
+                padding: 1.5rem 0;
             }
             
-            .stats-content {
-                gap: 1rem;
-            }
-            
-            .stat-number {
-                font-size: 1.5rem;
+            .country-details {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
         
         @media (max-width: 480px) {
             .container {
-                padding: 0 0.5rem;
+                padding: 0 15px;
             }
             
-            .country-info {
-                padding: 1rem;
+            .logo h1 {
+                font-size: 1.5rem;
             }
             
-            .country-name {
-                font-size: 1.25rem;
+            .article-title {
+                font-size: 1.2rem;
+            }
+            
+            .country-details {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Performance Optimizations */
+        .news-article {
+            contain: layout style paint;
+        }
+        
+        .country-flag {
+            will-change: auto;
+        }
+        
+        /* Accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            .news-article {
+                transition: none;
+            }
+            
+            .spinner {
+                animation: none;
             }
         }
     </style>
@@ -543,823 +380,381 @@
     <header class="header">
         <div class="container">
             <div class="header-content">
-                <!-- Brand Section -->
-                <div class="brand">
-                    <h1>🌍 CountryScope</h1>
-                    <p>Explore the world's countries, cultures, and destinations</p>
-                </div>
-                
-                <!-- Search and Filter Controls -->
-                <div class="controls">
-                    <input 
-                        type="text" 
-                        class="search-box" 
-                        placeholder="🔍 Search countries..." 
-                        id="searchInput"
-                        aria-label="Search countries"
-                    >
-                    <select class="filter-select" id="regionFilter" aria-label="Filter by region">
-                        <option value="">🌐 All Regions</option>
-                        <option value="Africa">🌍 Africa</option>
-                        <option value="Americas">🌎 Americas</option>
-                        <option value="Asia">🌏 Asia</option>
-                        <option value="Europe">🇪🇺 Europe</option>
-                        <option value="Oceania">🏝️ Oceania</option>
-                    </select>
+                <div class="logo">
+                    <span style="font-size: 2rem;">🌍</span>
+                    <div>
+                        <h1>WorldScope News</h1>
+                        <div class="tagline">Global News • Country Insights • World Updates</div>
+                    </div>
                 </div>
             </div>
         </div>
     </header>
 
+    <!-- Search and Filter Controls -->
+    <section class="controls">
+        <div class="container">
+            <div class="controls-inner">
+                <input type="text" 
+                       class="search-box" 
+                       id="searchInput" 
+                       placeholder="🔍 Search international news by title..."
+                       aria-label="Search news articles">
+                <select class="filter-select" id="regionFilter" aria-label="Filter by region">
+                    <option value="">🌐 All Regions</option>
+                    <option value="Asia">🌏 Asia</option>
+                    <option value="Europe">🇪🇺 Europe</option>
+                    <option value="Africa">🌍 Africa</option>
+                    <option value="Americas">🌎 Americas</option>
+                    <option value="Oceania">🌊 Oceania</option>
+                </select>
+            </div>
+        </div>
+    </section>
+
     <!-- Main Content -->
     <main class="container">
-        <!-- Statistics Section -->
-        <section class="stats" id="statsSection" style="display: none;">
-            <div class="stats-content">
-                <div class="stat-item">
-                    <span class="stat-number" id="totalCountries">0</span>
-                    <div class="stat-label">Countries Displayed</div>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number" id="totalPopulation">0</span>
-                    <div class="stat-label">Total Population</div>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number" id="averagePopulation">0</span>
-                    <div class="stat-label">Avg Population</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Loading Indicator -->
-        <div class="loading" id="loading">
+        <!-- Loading Spinner -->
+        <div class="loading" id="loadingSpinner">
             <div class="spinner"></div>
-            <p>Loading amazing countries data...</p>
         </div>
 
-        <!-- Countries Grid -->
-        <section class="countries-grid" id="countriesGrid" aria-label="Countries list"></section>
+        <!-- News Grid -->
+        <div class="news-grid" id="newsGrid"></div>
 
         <!-- No Results Message -->
         <div class="no-results" id="noResults" style="display: none;">
-            <h3>🔍 No Countries Found</h3>
-            <p>Try adjusting your search terms or filter settings</p>
+            <div class="no-results-icon">📰</div>
+            <h3>No news articles found</h3>
+            <p>Try adjusting your search terms or filter criteria.</p>
         </div>
     </main>
-
-    <!-- Country Detail Modal -->
-    <div id="countryModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <img id="modalFlag" src="" alt="" class="modal-flag">
-                <button class="modal-close" onclick="closeModal()">&times;</button>
-            </div>
-            <div class="modal-body">
-                <h2 id="modalCountryName" class="modal-country-name"></h2>
-                
-                <div class="modal-info-grid">
-                    <!-- Basic Information -->
-                    <div class="modal-info-section">
-                        <div class="modal-section-title">
-                            🏛️ Basic Information
-                        </div>
-                        <div class="modal-info-item">
-                            <span class="modal-info-label">Official Name:</span>
-                            <span class="modal-info-value" id="modalOfficialName">-</span>
-                        </div>
-                        <div class="modal-info-item">
-                            <span class="modal-info-label">Capital:</span>
-                            <span class="modal-info-value" id="modalCapital">-</span>
-                        </div>
-                        <div class="modal-info-item">
-                            <span class="modal-info-label">Region:</span>
-                            <span class="modal-info-value" id="modalRegion">-</span>
-                        </div>
-                        <div class="modal-info-item">
-                            <span class="modal-info-label">Subregion:</span>
-                            <span class="modal-info-value" id="modalSubregion">-</span>
-                        </div>
-                    </div>
-                    
-                    <!-- Demographics -->
-                    <div class="modal-info-section">
-                        <div class="modal-section-title">
-                            👥 Demographics
-                        </div>
-                        <div class="modal-info-item">
-                            <span class="modal-info-label">Population:</span>
-                            <span class="modal-info-value" id="modalPopulation">-</span>
-                        </div>
-                        <div class="modal-info-item">
-                            <span class="modal-info-label">Area:</span>
-                            <span class="modal-info-value" id="modalArea">-</span>
-                        </div>
-                        <div class="modal-info-item">
-                            <span class="modal-info-label">Density:</span>
-                            <span class="modal-info-value" id="modalDensity">-</span>
-                        </div>
-                    </div>
-                    
-                    <!-- Languages & Culture -->
-                    <div class="modal-info-section">
-                        <div class="modal-section-title">
-                            🗣️ Languages
-                        </div>
-                        <div id="modalLanguages" class="modal-languages">
-                            <!-- Languages will be inserted here -->
-                        </div>
-                    </div>
-                    
-                    <!-- Economy -->
-                    <div class="modal-info-section">
-                        <div class="modal-section-title">
-                            💰 Economy
-                        </div>
-                        <div id="modalCurrencies" class="modal-currencies">
-                            <!-- Currencies will be inserted here -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2025 <a href="https://int.vinnesia.my.id" rel="noopener">CountryScope</a> - Your Gateway to World Geography & Travel</p>
-            <p>Data powered by <a href="https://restcountries.com" target="_blank" rel="noopener">REST Countries API</a></p>
+            <p>&copy; 2025 WorldScope News. All rights reserved.</p>
+            <p>Visit us at <a href="https://int.vinnesia.my.id" rel="noopener">int.vinnesia.my.id</a></p>
+            <p>Stay informed with the latest international news and country insights</p>
         </div>
     </footer>
 
-    <!-- JavaScript -->
     <script>
-        // Global Variables
-        let allCountries = [];
-        let filteredCountries = [];
+        // Global variables
+        let newsData = [];
+        let countriesData = [];
+        let filteredNews = [];
         
         // DOM Elements
         const searchInput = document.getElementById('searchInput');
         const regionFilter = document.getElementById('regionFilter');
-        const countriesGrid = document.getElementById('countriesGrid');
-        const loading = document.getElementById('loading');
+        const newsGrid = document.getElementById('newsGrid');
+        const loadingSpinner = document.getElementById('loadingSpinner');
         const noResults = document.getElementById('noResults');
-        const statsSection = document.getElementById('statsSection');
-        const totalCountriesEl = document.getElementById('totalCountries');
-        const totalPopulationEl = document.getElementById('totalPopulation');
-        const averagePopulationEl = document.getElementById('averagePopulation');
-        
-        // API Configuration - Multiple endpoints for reliability
-        const API_URLS = [
-            'https://restcountries.com/v3.1/all',
-            'https://country-api-henna.vercel.app/countries',
-            'https://worldcountries-api.herokuapp.com/countries'
+
+        // Demo news data with international focus
+        const demoNews = [
+            {
+                id: 1,
+                title: "European Union Announces New Climate Initiative for 2025",
+                summary: "The European Union has unveiled an ambitious climate action plan focusing on renewable energy transition and carbon neutrality goals. The initiative includes major investments in solar and wind energy across member states.",
+                date: "2025-08-12",
+                country: "Germany",
+                region: "Europe"
+            },
+            {
+                id: 2,
+                title: "Asian Economic Summit Highlights Regional Trade Growth",
+                summary: "Leaders from across Asia gathered in Singapore to discuss expanding trade relationships and digital innovation. The summit emphasized sustainable development and technological cooperation between nations.",
+                date: "2025-08-11",
+                country: "Singapore",
+                region: "Asia"
+            },
+            {
+                id: 3,
+                title: "African Union Launches Continental Tourism Recovery Program",
+                summary: "A comprehensive tourism recovery initiative has been launched to boost international travel across Africa. The program focuses on showcasing cultural heritage and natural attractions to global visitors.",
+                date: "2025-08-10",
+                country: "Kenya",
+                region: "Africa"
+            },
+            {
+                id: 4,
+                title: "South American Countries Form New Technology Alliance",
+                summary: "Brazil, Argentina, and Chile announce a groundbreaking technology partnership aimed at advancing artificial intelligence research and digital infrastructure across the continent.",
+                date: "2025-08-09",
+                country: "Brazil",
+                region: "Americas"
+            },
+            {
+                id: 5,
+                title: "Australia Leads Pacific Region in Renewable Energy Innovation",
+                summary: "Australia unveils massive solar energy projects that could power much of the Pacific region. The initiative includes partnerships with New Zealand and Pacific island nations for sustainable energy distribution.",
+                date: "2025-08-08",
+                country: "Australia",
+                region: "Oceania"
+            },
+            {
+                id: 6,
+                title: "Nordic Countries Pioneer Smart City Technologies",
+                summary: "Sweden, Norway, and Denmark collaborate on revolutionary smart city solutions that integrate IoT sensors, sustainable transportation, and efficient energy management systems.",
+                date: "2025-08-07",
+                country: "Sweden",
+                region: "Europe"
+            },
+            {
+                id: 7,
+                title: "Middle East Investment in Space Technology Reaches New Heights",
+                summary: "The UAE announces major investments in space exploration and satellite technology, positioning the region as a key player in the global space industry with Mars mission preparations.",
+                date: "2025-08-06",
+                country: "United Arab Emirates",
+                region: "Asia"
+            },
+            {
+                id: 8,
+                title: "West African Nations Unite for Digital Currency Initiative",
+                summary: "Ghana, Nigeria, and Senegal launch a collaborative digital currency platform to facilitate cross-border trade and financial inclusion across West Africa.",
+                date: "2025-08-05",
+                country: "Ghana",
+                region: "Africa"
+            },
+            {
+                id: 9,
+                title: "Canadian Arctic Research Station Makes Climate Breakthrough",
+                summary: "Scientists at a Canadian research station in the Arctic have discovered new data about ice sheet dynamics that could revolutionize climate change predictions and global sea level monitoring.",
+                date: "2025-08-04",
+                country: "Canada",
+                region: "Americas"
+            },
+            {
+                id: 10,
+                title: "New Zealand's Marine Conservation Model Adopted Globally",
+                summary: "New Zealand's innovative approach to marine protected areas is being studied and implemented by countries worldwide, setting new standards for ocean conservation and sustainable fishing practices.",
+                date: "2025-08-03",
+                country: "New Zealand",
+                region: "Oceania"
+            }
         ];
-        
-        // Initialize Application
-        document.addEventListener('DOMContentLoaded', initApp);
-        
-        async function initApp() {
+
+        // Initialize the application
+        async function init() {
             try {
-                loading.style.display = 'block';
-                await fetchCountries();
-                setupEventListeners();
-                renderCountries(allCountries);
-                updateStats(allCountries);
+                newsData = demoNews;
+                await loadCountriesData();
+                filteredNews = [...newsData];
+                renderNews();
                 hideLoading();
+                setupEventListeners();
             } catch (error) {
-                console.error('Failed to initialize app:', error);
-                showError('Unable to load countries data. Please check your internet connection and try again.');
+                console.error('Error initializing app:', error);
+                hideLoading();
+                showError();
             }
         }
-        
-        // Fetch Countries Data from API with fallback URLs
-        async function fetchCountries() {
-            let lastError;
-            
-            // First, try to use cached data if available
-            const cachedData = localStorage.getItem('countriesData');
-            if (cachedData) {
-                try {
-                    const data = JSON.parse(cachedData);
-                    if (data.timestamp && Date.now() - data.timestamp < 24 * 60 * 60 * 1000) { // 24 hours
-                        allCountries = data.countries;
-                        filteredCountries = [...allCountries];
-                        console.log('Using cached data:', allCountries.length, 'countries');
-                        return;
-                    }
-                } catch (e) {
-                    localStorage.removeItem('countriesData');
-                }
+
+        // Fetch countries data from REST Countries API
+        async function loadCountriesData() {
+            try {
+                const response = await fetch('https://restcountries.com/v3.1/all?fields=name,capital,population,region,flags');
+                if (!response.ok) throw new Error('Failed to fetch countries data');
+                countriesData = await response.json();
+            } catch (error) {
+                console.error('Error loading countries data:', error);
+                // Fallback: continue without country data
+                countriesData = [];
             }
-            
-            // Try each API endpoint until one works
-            for (let i = 0; i < API_URLS.length; i++) {
-                try {
-                    console.log(`Trying API endpoint ${i + 1}:`, API_URLS[i]);
-                    
-                    const controller = new AbortController();
-                    const timeoutId = setTimeout(() => controller.abort(), 15000); // 15s timeout
-                    
-                    const response = await fetch(API_URLS[i], {
-                        method: 'GET',
-                        headers: {
-                            'Accept': 'application/json',
-                            'User-Agent': 'CountryScope/1.0'
-                        },
-                        signal: controller.signal,
-                        mode: 'cors'
-                    });
-                    
-                    clearTimeout(timeoutId);
-                    
-                    if (!response.ok) {
-                        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
-                    }
-                    
-                    const data = await response.json();
-                    console.log('Successfully fetched data:', data.length, 'countries');
-                    
-                    // Process data - assume all APIs return similar v3 format
-                    allCountries = data.map(country => ({
-                        name: country.name?.common || country.name || 'Unknown',
-                        officialName: country.name?.official || country.name?.common || country.name || 'Unknown',
-                        capital: Array.isArray(country.capital) ? country.capital[0] : (country.capital || 'No capital'),
-                        population: country.population || 0,
-                        region: country.region || 'Unknown',
-                        subregion: country.subregion || 'Unknown',
-                        area: country.area || 0,
-                        flag: country.flags?.png || country.flags?.svg || country.flag || '',
-                        code: country.cca3 || country.alpha3Code || country.code || '',
-                        languages: country.languages || {},
-                        currencies: country.currencies || {}
-                    })).filter(country => country.name !== 'Unknown');
-                    
-                    // Sort alphabetically
-                    allCountries.sort((a, b) => a.name.localeCompare(b.name));
-                    filteredCountries = [...allCountries];
-                    
-                    // Cache successful data
-                    try {
-                        localStorage.setItem('countriesData', JSON.stringify({
-                            countries: allCountries,
-                            timestamp: Date.now()
-                        }));
-                    } catch (e) {
-                        console.warn('Could not cache data:', e.message);
-                    }
-                    
-                    return; // Success, exit the loop
-                    
-                } catch (error) {
-                    console.error(`API endpoint ${i + 1} failed:`, error.message);
-                    lastError = error;
-                    
-                    if (i < API_URLS.length - 1) {
-                        // Wait before trying next endpoint
-                        await new Promise(resolve => setTimeout(resolve, 2000));
-                    }
-                }
+        }
+
+        // Get country data by name
+        function getCountryData(countryName) {
+            return countriesData.find(country => 
+                country.name.common.toLowerCase() === countryName.toLowerCase() ||
+                country.name.official.toLowerCase() === countryName.toLowerCase()
+            );
+        }
+
+        // Format number with commas
+        function formatNumber(num) {
+            return num ? num.toLocaleString() : 'N/A';
+        }
+
+        // Format date
+        function formatDate(dateString) {
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            return new Date(dateString).toLocaleDateString('en-US', options);
+        }
+
+        // Render news articles
+        function renderNews() {
+            if (filteredNews.length === 0) {
+                newsGrid.style.display = 'none';
+                noResults.style.display = 'block';
+                return;
             }
-            
-            // If all APIs fail, use fallback data
-            console.log('All APIs failed, using fallback data');
-            useFallbackData();
+
+            newsGrid.style.display = 'grid';
+            noResults.style.display = 'none';
+
+            newsGrid.innerHTML = filteredNews.map(article => {
+                const countryData = getCountryData(article.country);
+                
+                return `
+                    <article class="news-article" itemscope itemtype="http://schema.org/NewsArticle">
+                        <div class="article-content">
+                            <h2 class="article-title" itemprop="headline">${article.title}</h2>
+                            <p class="article-summary" itemprop="description">${article.summary}</p>
+                            <div class="article-meta">
+                                <time class="article-date" datetime="${article.date}" itemprop="datePublished">
+                                    📅 ${formatDate(article.date)}
+                                </time>
+                                <span class="article-location" itemprop="contentLocation">
+                                    📍 ${article.country}
+                                </span>
+                            </div>
+                        </div>
+                        ${countryData ? renderCountryInfo(countryData) : ''}
+                    </article>
+                `;
+            }).join('');
         }
-        
-        // Fallback data in case all APIs fail - Extended with more countries
-        function useFallbackData() {
-            allCountries = [
-                {
-                    name: 'Indonesia',
-                    officialName: 'Republic of Indonesia',
-                    capital: 'Jakarta',
-                    population: 273523615,
-                    region: 'Asia',
-                    subregion: 'South-Eastern Asia',
-                    area: 1904569,
-                    flag: 'https://flagcdn.com/w320/id.png',
-                    code: 'IDN',
-                    languages: { ind: 'Indonesian' },
-                    currencies: { IDR: { name: 'Indonesian rupiah', symbol: 'Rp' } }
-                },
-                {
-                    name: 'United States',
-                    officialName: 'United States of America',
-                    capital: 'Washington, D.C.',
-                    population: 331002651,
-                    region: 'Americas',
-                    subregion: 'Northern America',
-                    area: 9372610,
-                    flag: 'https://flagcdn.com/w320/us.png',
-                    code: 'USA',
-                    languages: { eng: 'English' },
-                    currencies: { USD: { name: 'United States dollar', symbol: '$' } }
-                },
-                {
-                    name: 'China',
-                    officialName: 'People\'s Republic of China',
-                    capital: 'Beijing',
-                    population: 1439323776,
-                    region: 'Asia',
-                    subregion: 'Eastern Asia',
-                    area: 9596960,
-                    flag: 'https://flagcdn.com/w320/cn.png',
-                    code: 'CHN',
-                    languages: { zho: 'Chinese' },
-                    currencies: { CNY: { name: 'Chinese yuan', symbol: '¥' } }
-                },
-                {
-                    name: 'India',
-                    officialName: 'Republic of India',
-                    capital: 'New Delhi',
-                    population: 1380004385,
-                    region: 'Asia',
-                    subregion: 'Southern Asia',
-                    area: 3287263,
-                    flag: 'https://flagcdn.com/w320/in.png',
-                    code: 'IND',
-                    languages: { hin: 'Hindi', eng: 'English' },
-                    currencies: { INR: { name: 'Indian rupee', symbol: '₹' } }
-                },
-                {
-                    name: 'Brazil',
-                    officialName: 'Federative Republic of Brazil',
-                    capital: 'Brasília',
-                    population: 212559417,
-                    region: 'Americas',
-                    subregion: 'South America',
-                    area: 8515767,
-                    flag: 'https://flagcdn.com/w320/br.png',
-                    code: 'BRA',
-                    languages: { por: 'Portuguese' },
-                    currencies: { BRL: { name: 'Brazilian real', symbol: 'R$' } }
-                },
-                {
-                    name: 'Russia',
-                    officialName: 'Russian Federation',
-                    capital: 'Moscow',
-                    population: 145934462,
-                    region: 'Europe',
-                    subregion: 'Eastern Europe',
-                    area: 17098246,
-                    flag: 'https://flagcdn.com/w320/ru.png',
-                    code: 'RUS',
-                    languages: { rus: 'Russian' },
-                    currencies: { RUB: { name: 'Russian ruble', symbol: '₽' } }
-                },
-                {
-                    name: 'Japan',
-                    officialName: 'Japan',
-                    capital: 'Tokyo',
-                    population: 125836021,
-                    region: 'Asia',
-                    subregion: 'Eastern Asia',
-                    area: 377930,
-                    flag: 'https://flagcdn.com/w320/jp.png',
-                    code: 'JPN',
-                    languages: { jpn: 'Japanese' },
-                    currencies: { JPY: { name: 'Japanese yen', symbol: '¥' } }
-                },
-                {
-                    name: 'Germany',
-                    officialName: 'Federal Republic of Germany',
-                    capital: 'Berlin',
-                    population: 83783942,
-                    region: 'Europe',
-                    subregion: 'Western Europe',
-                    area: 357114,
-                    flag: 'https://flagcdn.com/w320/de.png',
-                    code: 'DEU',
-                    languages: { deu: 'German' },
-                    currencies: { EUR: { name: 'Euro', symbol: '€' } }
-                },
-                {
-                    name: 'United Kingdom',
-                    officialName: 'United Kingdom of Great Britain and Northern Ireland',
-                    capital: 'London',
-                    population: 67886011,
-                    region: 'Europe',
-                    subregion: 'Northern Europe',
-                    area: 242495,
-                    flag: 'https://flagcdn.com/w320/gb.png',
-                    code: 'GBR',
-                    languages: { eng: 'English' },
-                    currencies: { GBP: { name: 'British pound', symbol: '£' } }
-                },
-                {
-                    name: 'France',
-                    officialName: 'French Republic',
-                    capital: 'Paris',
-                    population: 65273511,
-                    region: 'Europe',
-                    subregion: 'Western Europe',
-                    area: 640679,
-                    flag: 'https://flagcdn.com/w320/fr.png',
-                    code: 'FRA',
-                    languages: { fra: 'French' },
-                    currencies: { EUR: { name: 'Euro', symbol: '€' } }
-                },
-                {
-                    name: 'Canada',
-                    officialName: 'Canada',
-                    capital: 'Ottawa',
-                    population: 37742154,
-                    region: 'Americas',
-                    subregion: 'Northern America',
-                    area: 9984670,
-                    flag: 'https://flagcdn.com/w320/ca.png',
-                    code: 'CAN',
-                    languages: { eng: 'English', fra: 'French' },
-                    currencies: { CAD: { name: 'Canadian dollar', symbol: '$' } }
-                },
-                {
-                    name: 'Australia',
-                    officialName: 'Commonwealth of Australia',
-                    capital: 'Canberra',
-                    population: 25499884,
-                    region: 'Oceania',
-                    subregion: 'Australia and New Zealand',
-                    area: 7692024,
-                    flag: 'https://flagcdn.com/w320/au.png',
-                    code: 'AUS',
-                    languages: { eng: 'English' },
-                    currencies: { AUD: { name: 'Australian dollar', symbol: '$' } }
-                },
-                {
-                    name: 'Nigeria',
-                    officialName: 'Federal Republic of Nigeria',
-                    capital: 'Abuja',
-                    population: 206139589,
-                    region: 'Africa',
-                    subregion: 'Western Africa',
-                    area: 923768,
-                    flag: 'https://flagcdn.com/w320/ng.png',
-                    code: 'NGA',
-                    languages: { eng: 'English' },
-                    currencies: { NGN: { name: 'Nigerian naira', symbol: '₦' } }
-                },
-                {
-                    name: 'South Africa',
-                    officialName: 'Republic of South Africa',
-                    capital: 'Cape Town',
-                    population: 59308690,
-                    region: 'Africa',
-                    subregion: 'Southern Africa',
-                    area: 1221037,
-                    flag: 'https://flagcdn.com/w320/za.png',
-                    code: 'ZAF',
-                    languages: { eng: 'English', afr: 'Afrikaans' },
-                    currencies: { ZAR: { name: 'South African rand', symbol: 'R' } }
-                },
-                {
-                    name: 'Egypt',
-                    officialName: 'Arab Republic of Egypt',
-                    capital: 'Cairo',
-                    population: 102334404,
-                    region: 'Africa',
-                    subregion: 'Northern Africa',
-                    area: 1002450,
-                    flag: 'https://flagcdn.com/w320/eg.png',
-                    code: 'EGY',
-                    languages: { ara: 'Arabic' },
-                    currencies: { EGP: { name: 'Egyptian pound', symbol: '£' } }
-                }
-            ];
-            
-            filteredCountries = [...allCountries];
-            console.log('Using fallback data with', allCountries.length, 'countries');
-            
-            // Show notification that we're using offline data
-            showOfflineNotification();
-        }
-        
-        // Show offline notification
-        function showOfflineNotification() {
-            const notification = document.createElement('div');
-            notification.style.cssText = `
-                position: fixed;
-                top: 20px;
-                left: 50%;
-                transform: translateX(-50%);
-                background: #ff9800;
-                color: white;
-                padding: 1rem 2rem;
-                border-radius: 25px;
-                z-index: 3000;
-                font-weight: 600;
-                box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-                animation: slideDown 0.5s ease;
+
+        // Render country information section
+        function renderCountryInfo(country) {
+            return `
+                <div class="country-info" itemscope itemtype="http://schema.org/Country">
+                    <div class="country-header">
+                        <img class="country-flag" 
+                             src="${country.flags?.svg || country.flags?.png || ''}" 
+                             alt="Flag of ${country.name.common}"
+                             loading="lazy"
+                             onerror="this.style.display='none'">
+                        <h3 class="country-name" itemprop="name">${country.name.common}</h3>
+                    </div>
+                    <div class="country-details">
+                        <div class="country-detail">
+                            <div class="detail-label">Capital</div>
+                            <div class="detail-value" itemprop="capital">
+                                ${country.capital?.[0] || 'N/A'}
+                            </div>
+                        </div>
+                        <div class="country-detail">
+                            <div class="detail-label">Population</div>
+                            <div class="detail-value" itemprop="population">
+                                ${formatNumber(country.population)}
+                            </div>
+                        </div>
+                        <div class="country-detail">
+                            <div class="detail-label">Region</div>
+                            <div class="detail-value" itemprop="addressRegion">
+                                ${country.region || 'N/A'}
+                            </div>
+                        </div>
+                    </div>
+                </div>
             `;
-            notification.innerHTML = '📱 Offline Mode: Showing limited country data';
-            document.body.appendChild(notification);
-            
-            setTimeout(() => {
-                notification.style.animation = 'slideUp 0.5s ease forwards';
-                setTimeout(() => notification.remove(), 500);
-            }, 4000);
         }
-        
-        // Setup Event Listeners
-        function setupEventListeners() {
-            // Real-time search with debouncing
-            let searchTimeout;
-            searchInput.addEventListener('input', (e) => {
-                clearTimeout(searchTimeout);
-                searchTimeout = setTimeout(() => {
-                    filterCountries();
-                }, 300);
-            });
-            
-            // Region filter
-            regionFilter.addEventListener('change', filterCountries);
-        }
-        
-        // Filter Countries based on search and region
-        function filterCountries() {
+
+        // Filter news based on search and region
+        function filterNews() {
             const searchTerm = searchInput.value.toLowerCase().trim();
             const selectedRegion = regionFilter.value;
-            
-            filteredCountries = allCountries.filter(country => {
+
+            filteredNews = newsData.filter(article => {
                 const matchesSearch = !searchTerm || 
-                    country.name.toLowerCase().includes(searchTerm) ||
-                    country.capital.toLowerCase().includes(searchTerm) ||
-                    country.region.toLowerCase().includes(searchTerm);
+                    article.title.toLowerCase().includes(searchTerm) ||
+                    article.summary.toLowerCase().includes(searchTerm) ||
+                    article.country.toLowerCase().includes(searchTerm);
                 
-                const matchesRegion = !selectedRegion || country.region === selectedRegion;
+                const matchesRegion = !selectedRegion || article.region === selectedRegion;
                 
                 return matchesSearch && matchesRegion;
             });
-            
-            renderCountries(filteredCountries);
-            updateStats(filteredCountries);
+
+            renderNews();
         }
-        
-        // Render Countries Grid
-        function renderCountries(countries) {
-            if (countries.length === 0) {
-                countriesGrid.innerHTML = '';
-                showNoResults();
-                return;
-            }
+
+        // Setup event listeners
+        function setupEventListeners() {
+            // Real-time search
+            searchInput.addEventListener('input', debounce(filterNews, 300));
             
-            hideNoResults();
+            // Region filter
+            regionFilter.addEventListener('change', filterNews);
             
-            // Use DocumentFragment for better performance
-            const fragment = document.createDocumentFragment();
-            
-            countries.forEach(country => {
-                const countryCard = createCountryCard(country);
-                fragment.appendChild(countryCard);
+            // Keyboard navigation
+            searchInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    searchInput.value = '';
+                    filterNews();
+                }
             });
-            
-            countriesGrid.innerHTML = '';
-            countriesGrid.appendChild(fragment);
         }
-        
-        // Create Individual Country Card
-        function createCountryCard(country) {
-            const card = document.createElement('article');
-            card.className = 'country-card';
-            card.setAttribute('data-country', country.code);
-            
-            // Format population with commas
-            const formattedPopulation = country.population.toLocaleString();
-            
-            card.innerHTML = `
-                <div class="flag-container">
-                    <img 
-                        src="${country.flag}" 
-                        alt="Flag of ${country.name}" 
-                        class="flag"
-                        loading="lazy"
-                        onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\\'http://www.w3.org/2000/svg\\' viewBox=\\'0 0 300 200\\'%3E%3Crect fill=\\'%23f0f0f0\\' width=\\'300\\' height=\\'200\\'/%3E%3Ctext x=\\'150\\' y=\\'100\\' text-anchor=\\'middle\\' font-family=\\'Arial\\' font-size=\\'14\\' fill=\\'%23666\\'%3ENo Flag%3C/text%3E%3C/svg%3E'"
-                    >
-                </div>
-                <div class="country-info">
-                    <h2 class="country-name">${country.name}</h2>
-                    <div class="info-item">
-                        <span class="info-label">Capital:</span>
-                        <span class="info-value">${country.capital}</span>
-                    </div>
-                    <div class="info-item">
-                        <span class="info-label">Population:</span>
-                        <span class="info-value">${formattedPopulation}</span>
-                    </div>
-                    <div class="info-item">
-                        <span class="info-label">Region:</span>
-                        <span class="info-value">
-                            <span class="region-badge">${country.region}</span>
-                        </span>
-                    </div>
-                </div>
-            `;
-            
-            // Add click event for country details modal
-            card.addEventListener('click', () => {
-                showCountryModal(country);
-            });
-            
-            return card;
+
+        // Debounce function for performance
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
         }
-        
-        // Update Statistics
-        function updateStats(countries) {
-            const total = countries.length;
-            const totalPop = countries.reduce((sum, country) => sum + country.population, 0);
-            const avgPop = total > 0 ? Math.round(totalPop / total) : 0;
-            
-            totalCountriesEl.textContent = total.toLocaleString();
-            totalPopulationEl.textContent = formatLargeNumber(totalPop);
-            averagePopulationEl.textContent = formatLargeNumber(avgPop);
-            
-            statsSection.style.display = 'block';
-        }
-        
-        // Show Country Detail Modal
-        function showCountryModal(country) {
-            const modal = document.getElementById('countryModal');
-            
-            // Update modal content
-            document.getElementById('modalFlag').src = country.flag;
-            document.getElementById('modalFlag').alt = `Flag of ${country.name}`;
-            document.getElementById('modalCountryName').textContent = country.name;
-            document.getElementById('modalOfficialName').textContent = country.officialName || country.name;
-            document.getElementById('modalCapital').textContent = country.capital;
-            document.getElementById('modalRegion').textContent = country.region;
-            document.getElementById('modalSubregion').textContent = country.subregion || 'Unknown';
-            document.getElementById('modalPopulation').textContent = country.population.toLocaleString();
-            document.getElementById('modalArea').textContent = country.area ? `${country.area.toLocaleString()} km²` : 'Unknown';
-            
-            // Calculate population density
-            const density = country.area && country.population ? 
-                Math.round(country.population / country.area) : 0;
-            document.getElementById('modalDensity').textContent = density ? 
-                `${density.toLocaleString()} people/km²` : 'Unknown';
-            
-            // Update languages
-            const languagesContainer = document.getElementById('modalLanguages');
-            languagesContainer.innerHTML = '';
-            
-            if (country.languages && Object.keys(country.languages).length > 0) {
-                const languages = Object.values(country.languages);
-                languages.forEach(language => {
-                    const tag = document.createElement('span');
-                    tag.className = 'language-tag';
-                    tag.textContent = language;
-                    languagesContainer.appendChild(tag);
-                });
-            } else {
-                languagesContainer.innerHTML = '<span class="language-tag">Unknown</span>';
-            }
-            
-            // Update currencies
-            const currenciesContainer = document.getElementById('modalCurrencies');
-            currenciesContainer.innerHTML = '';
-            
-            if (country.currencies && Object.keys(country.currencies).length > 0) {
-                Object.entries(country.currencies).forEach(([code, currency]) => {
-                    const tag = document.createElement('span');
-                    tag.className = 'currency-tag';
-                    tag.textContent = currency.symbol ? 
-                        `${currency.name} (${currency.symbol})` : 
-                        currency.name || code;
-                    currenciesContainer.appendChild(tag);
-                });
-            } else {
-                currenciesContainer.innerHTML = '<span class="currency-tag">Unknown</span>';
-            }
-            
-            // Show modal
-            modal.style.display = 'block';
-            document.body.style.overflow = 'hidden'; // Prevent background scroll
-        }
-        
-        // Close Country Modal
-        function closeModal() {
-            const modal = document.getElementById('countryModal');
-            modal.style.display = 'none';
-            document.body.style.overflow = 'auto'; // Restore scroll
-        }
-        
-        // Close modal when clicking outside
-        document.getElementById('countryModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeModal();
-            }
-        });
-        
-        // Close modal with Escape key
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                closeModal();
-            }
-        });
-        
-        // UI Helper Functions
+
+        // Hide loading spinner
         function hideLoading() {
-            loading.style.display = 'none';
+            loadingSpinner.style.display = 'none';
         }
-        
-        function showNoResults() {
-            noResults.style.display = 'block';
-        }
-        
-        function hideNoResults() {
-            noResults.style.display = 'none';
-        }
-        
-        function showError(message) {
-            loading.innerHTML = `
-                <div style="color: #ff6b6b; text-align: center;">
-                    <h3>⚠️ Connection Issue</h3>
-                    <p>${message}</p>
-                    <button onclick="location.reload()" style="
-                        background: #667eea; 
-                        color: white; 
-                        border: none; 
-                        padding: 0.75rem 1.5rem; 
-                        border-radius: 25px; 
-                        cursor: pointer; 
-                        margin-top: 1rem;
-                        font-size: 1rem;
-                    ">
-                        🔄 Try Again
-                    </button>
+
+        // Show error message
+        function showError() {
+            newsGrid.innerHTML = `
+                <div class="no-results">
+                    <div class="no-results-icon">⚠️</div>
+                    <h3>Unable to load content</h3>
+                    <p>Please check your internet connection and try refreshing the page.</p>
                 </div>
             `;
         }
-        
-        // Performance Optimization: Lazy Loading Images
-        if ('IntersectionObserver' in window) {
-            const imageObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const img = entry.target;
-                        img.src = img.dataset.src;
-                        img.classList.remove('lazy');
-                        imageObserver.unobserve(img);
-                    }
-                });
-            });
-        }
-        
-        // Add to search URL parameters for better SEO
-        function updateURLParams() {
-            const params = new URLSearchParams();
-            if (searchInput.value) params.set('search', searchInput.value);
-            if (regionFilter.value) params.set('region', regionFilter.value);
-            
-            const newURL = window.location.pathname + (params.toString() ? '?' + params.toString() : '');
-            window.history.replaceState({}, '', newURL);
-        }
-        
-        // Load URL parameters on page load
-        function loadURLParams() {
-            const params = new URLSearchParams(window.location.search);
-            const search = params.get('search');
-            const region = params.get('region');
-            
-            if (search) searchInput.value = search;
-            if (region) regionFilter.value = region;
-        }
-        
-        // Initialize URL parameters
-        loadURLParams();
-        
-        // Service Worker Registration for PWA capabilities
+
+        // Service Worker registration for PWA capabilities
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('/sw.js')
-                    .then(registration => console.log('SW registered'))
-                    .catch(registrationError => console.log('SW registration failed'));
+                    .catch(error => console.log('SW registration failed'));
             });
         }
-    </script>
-    
-    <!-- Schema.org Structured Data for SEO -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "WebApplication",
-        "name": "CountryScope",
-        "description": "Comprehensive world countries explorer with flags, population data, capitals, and travel information",
-        "url": "https://int.vinnesia.my.id",
-        "applicationCategory": "EducationApplication",
-        "operatingSystem": "Any",
-        "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "USD"
-        },
-        "featureList": [
-            "Country search and filtering",
-            "Population statistics",
-            "Flag galleries",
-            "Capital city information",
-            "Regional data exploration"
-        ]
-    }
+
+        // Initialize app when DOM is loaded
+        document.addEventListener('DOMContentLoaded', init);
+
+        // Performance monitoring
+        window.addEventListener('load', () => {
+            // Log performance metrics for optimization
+            const perfData = performance.timing;
+            const loadTime = perfData.loadEventEnd - perfData.navigationStart;
+            console.log(`Page load time: ${loadTime}ms`);
+        });
+
+        // Add structured data for SEO
+        const structuredData = {
+            "@context": "http://schema.org",
+            "@type": "NewsMediaOrganization",
+            "name": "WorldScope News",
+            "url": "https://int.vinnesia.my.id",
+            "description": "International news platform providing global coverage with detailed country information",
+            "sameAs": [
+                "https://int.vinnesia.my.id"
+            ]
+        };
+
+        // Insert structured data
+        const script = document.createElement('script');
+        script.type = 'application/ld+json';
+        script.textContent = JSON.stringify(structuredData);
+        document.head.appendChild(script);
     </script>
 </body>
 </html>
