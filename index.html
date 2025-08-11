@@ -3,144 +3,606 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WorldScope News - Latest International News, Countries & World Updates</title>
+    <title>Pet Lovers Community - Cat & Dog Lovers Unite | catdog.vinnesia.my.id</title>
     
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Stay updated with latest international news from around the world. Explore countries, flags, population data, capitals, and global updates from all continents - Asia, Europe, Africa, Americas, Oceania.">
-    <meta name="keywords" content="international news, world news, countries, flags, population, capitals, global news, Asia news, Europe news, Africa news, Americas news, Oceania news, tourism, world updates">
-    <meta name="author" content="WorldScope News">
+    <meta name="description" content="Join our Pet Lovers Community for cat lovers and dog lovers. Browse cute pet images, share pet profiles, and connect with fellow pet enthusiasts at catdog.vinnesia.my.id">
+    <meta name="keywords" content="cat lovers, dog lovers, pet community, cute pet images, pet profiles, cats, dogs, pet forum, pet gallery">
+    <meta name="author" content="Pet Lovers Community">
     <meta name="robots" content="index, follow">
     
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="WorldScope News - Latest International News & Countries Data">
-    <meta property="og:description" content="Comprehensive international news coverage with detailed country information including flags, population, capitals, and regional data.">
-    <meta property="og:url" content="https://int.vinnesia.my.id">
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Pet Lovers Community - Cat & Dog Lovers Unite">
+    <meta property="og:description" content="Join our Pet Lovers Community for cat lovers and dog lovers. Browse cute pet images and connect with fellow pet enthusiasts.">
     <meta property="og:type" content="website">
-    <meta property="og:site_name" content="WorldScope News">
-    
-    <!-- Twitter Card Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="WorldScope News - International News & Countries">
-    <meta name="twitter:description" content="Latest world news with comprehensive country data and regional insights.">
-    
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://int.vinnesia.my.id">
+    <meta property="og:url" content="https://catdog.vinnesia.my.id">
     
     <!-- Favicon -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌍</text></svg>">
-    
-    <!-- Preconnect for performance -->
-    <link rel="preconnect" href="https://restcountries.com">
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23FF6B6B'/%3E%3Cpath d='M20 25c0-3 2-5 5-5s5 2 5 5-2 5-5 5-5-2-5-5zm14 0c0-3 2-5 5-5s5 2 5 5-2 5-5 5-5-2-5-5z' fill='%23FFF'/%3E%3Cpath d='M32 35c-3 0-5 2-5 5v8h10v-8c0-3-2-5-5-5z' fill='%23FFF'/%3E%3C/svg%3E">
     
     <style>
-        /* Reset and Base Styles */
+        /* CSS Reset and Base Styles */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
         
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #f8f9fa;
+        :root {
+            --primary-color: #FF6B6B;
+            --secondary-color: #4ECDC4;
+            --accent-color: #FFE66D;
+            --text-color: #2C3E50;
+            --bg-color: #F8F9FA;
+            --white: #FFFFFF;
+            --shadow: 0 2px 10px rgba(0,0,0,0.1);
+            --border-radius: 12px;
+            --transition: all 0.3s ease;
         }
         
-        /* Header Styles */
-        .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+        }
+        
+        /* Header and Navigation */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
             padding: 1rem 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: var(--shadow);
             position: sticky;
             top: 0;
             z-index: 1000;
         }
         
-        .container {
+        .header-content {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
+            padding: 0 2rem;
         }
         
         .logo {
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+            color: var(--white);
         }
         
-        .logo h1 {
-            font-size: 1.8rem;
-            font-weight: 700;
-        }
-        
-        .tagline {
-            font-size: 0.9rem;
-            opacity: 0.9;
-            margin-top: 0.25rem;
-        }
-        
-        /* Search and Filter Controls */
-        .controls {
-            background: white;
-            padding: 1.5rem 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        }
-        
-        .controls-inner {
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--white);
+            border-radius: 50%;
             display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
             align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
         }
         
-        .search-box, .filter-select {
-            padding: 0.75rem 1rem;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: border-color 0.3s ease;
-        }
-        
-        .search-box {
-            flex: 1;
-            min-width: 250px;
-        }
-        
-        .search-box:focus, .filter-select:focus {
-            outline: none;
-            border-color: #667eea;
-        }
-        
-        .filter-select {
-            min-width: 150px;
-            background: white;
-        }
-        
-        /* Loading Spinner */
-        .loading {
+        nav ul {
             display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+        }
+        
+        nav a:hover, nav a.active {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+        
+        /* Mobile Menu Button */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Main Content */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            min-height: calc(100vh - 180px);
+        }
+        
+        .page {
+            display: none;
+        }
+        
+        .page.active {
+            display: block;
+            animation: fadeIn 0.3s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Home Page Styles */
+        .hero {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .galleries {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .gallery-section {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+        
+        .gallery-section h2 {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+        
+        .gallery-section h2.cats { color: var(--primary-color); }
+        .gallery-section h2.dogs { color: var(--secondary-color); }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+        }
+        
+        .gallery-item {
+            position: relative;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            cursor: pointer;
+            transition: var(--transition);
+            background: #f0f0f0;
+            aspect-ratio: 1;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .loading-placeholder {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 0.9rem;
+        }
+        
+        .load-more-btn {
+            display: block;
+            margin: 2rem auto;
+            padding: 0.8rem 2rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .load-more-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 2000;
             justify-content: center;
             align-items: center;
-            padding: 2rem;
         }
         
+        .modal.active {
+            display: flex;
+            animation: modalFade 0.3s ease-in;
+        }
+        
+        @keyframes modalFade {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            position: relative;
+            animation: modalSlide 0.3s ease-out;
+        }
+        
+        @keyframes modalSlide {
+            from { transform: scale(0.8); }
+            to { transform: scale(1); }
+        }
+        
+        .modal-content img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(0,0,0,0.7);
+            color: var(--white);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Forum Page Styles */
+        .forum-container {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+        
+        .post-form {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: var(--bg-color);
+            border-radius: var(--border-radius);
+        }
+        
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #ddd;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+        
+        .post-btn {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .post-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+        
+        .posts-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .post {
+            padding: 1.5rem;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            background: var(--white);
+        }
+        
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .post-author {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        .post-time {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .post-content {
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        
+        .post-actions {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .reply-btn {
+            background: none;
+            border: none;
+            color: var(--secondary-color);
+            cursor: pointer;
+            font-size: 0.9rem;
+            text-decoration: underline;
+        }
+        
+        .replies {
+            margin-left: 2rem;
+            margin-top: 1rem;
+            border-left: 3px solid var(--accent-color);
+            padding-left: 1rem;
+        }
+        
+        .reply {
+            background: var(--bg-color);
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Profile Page Styles */
+        .profile-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        
+        .profile-form-section,
+        .profiles-display-section {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+        
+        .file-input-wrapper {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            width: 100%;
+        }
+        
+        .file-input {
+            position: absolute;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+        
+        .file-input-label {
+            display: block;
+            padding: 0.8rem;
+            background: var(--bg-color);
+            border: 2px dashed #ddd;
+            border-radius: var(--border-radius);
+            text-align: center;
+            transition: var(--transition);
+        }
+        
+        .file-input-label:hover {
+            border-color: var(--primary-color);
+        }
+        
+        .profiles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+        
+        .profile-card {
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            padding: 1rem;
+            text-align: center;
+            background: var(--bg-color);
+        }
+        
+        .profile-photo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1rem;
+            border: 3px solid var(--primary-color);
+        }
+        
+        .profile-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+        }
+        
+        .profile-details {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--text-color);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                padding: 0 1rem;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--primary-color);
+                padding: 1rem;
+            }
+            
+            nav.active {
+                display: block;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            nav a {
+                display: block;
+                padding: 1rem;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+            
+            main {
+                padding: 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .galleries {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            }
+            
+            .profile-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .modal-content {
+                max-width: 95%;
+                max-height: 95%;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero {
+                padding: 1rem;
+            }
+            
+            .gallery-section {
+                padding: 1rem;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.5rem;
+            }
+        }
+        
+        /* Loading Animation */
         .spinner {
             width: 40px;
             height: 40px;
             border: 4px solid #f3f3f3;
-            border-top: 4px solid #667eea;
+            border-top: 4px solid var(--primary-color);
             border-radius: 50%;
             animation: spin 1s linear infinite;
+            margin: 0 auto;
         }
         
         @keyframes spin {
@@ -148,613 +610,640 @@
             100% { transform: rotate(360deg); }
         }
         
-        /* News Grid */
-        .news-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 2rem;
-            padding: 2rem 0;
-        }
-        
-        /* News Article Card */
-        .news-article {
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .news-article:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-        }
-        
-        .article-content {
-            padding: 1.5rem;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .article-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 0.75rem;
-            color: #2c3e50;
-            line-height: 1.4;
-        }
-        
-        .article-summary {
-            color: #666;
-            margin-bottom: 1rem;
-            flex: 1;
-            line-height: 1.6;
-        }
-        
-        .article-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.9rem;
-            color: #888;
-            margin-bottom: 1rem;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-        
-        .article-date {
-            font-weight: 500;
-        }
-        
-        .article-location {
-            background: #e8f4fd;
-            color: #1976d2;
-            padding: 0.25rem 0.5rem;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
-        
-        /* Country Info Section */
-        .country-info {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            border-top: 1px solid #e0e0e0;
-            padding: 1.5rem;
-        }
-        
-        .country-header {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            margin-bottom: 1rem;
-        }
-        
-        .country-flag {
-            width: 40px;
-            height: 30px;
-            object-fit: cover;
-            border-radius: 4px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        
-        .country-name {
-            font-weight: 600;
-            color: #2c3e50;
-            font-size: 1.1rem;
-        }
-        
-        .country-details {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 0.75rem;
-        }
-        
-        .country-detail {
-            text-align: center;
-            padding: 0.5rem;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        }
-        
-        .detail-label {
-            font-size: 0.8rem;
-            color: #666;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        
-        .detail-value {
-            font-weight: 600;
-            color: #2c3e50;
-            margin-top: 0.25rem;
-            font-size: 0.9rem;
-        }
-        
-        /* No Results Message */
-        .no-results {
-            text-align: center;
-            padding: 3rem 1rem;
-            color: #666;
-        }
-        
-        .no-results-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            opacity: 0.5;
-        }
-        
-        /* Footer */
-        .footer {
-            background: #2c3e50;
-            color: white;
-            text-align: center;
-            padding: 2rem 1rem;
-            margin-top: 3rem;
-        }
-        
-        .footer p {
-            margin-bottom: 0.5rem;
-        }
-        
-        .footer a {
-            color: #74b9ff;
-            text-decoration: none;
-        }
-        
-        .footer a:hover {
-            text-decoration: underline;
-        }
-        
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .controls-inner {
-                flex-direction: column;
-            }
-            
-            .search-box, .filter-select {
-                width: 100%;
-            }
-            
-            .news-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-                padding: 1.5rem 0;
-            }
-            
-            .country-details {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .container {
-                padding: 0 15px;
-            }
-            
-            .logo h1 {
-                font-size: 1.5rem;
-            }
-            
-            .article-title {
-                font-size: 1.2rem;
-            }
-            
-            .country-details {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        /* Performance Optimizations */
-        .news-article {
-            contain: layout style paint;
-        }
-        
-        .country-flag {
-            will-change: auto;
-        }
-        
-        /* Accessibility */
-        @media (prefers-reduced-motion: reduce) {
-            .news-article {
-                transition: none;
-            }
-            
-            .spinner {
-                animation: none;
-            }
-        }
+        /* Utility Classes */
+        .hidden { display: none !important; }
+        .text-center { text-align: center; }
+        .mt-2 { margin-top: 1rem; }
+        .mb-2 { margin-bottom: 1rem; }
     </style>
 </head>
 <body>
-    <!-- Header Section -->
-    <header class="header">
-        <div class="container">
-            <div class="header-content">
-                <div class="logo">
-                    <span style="font-size: 2rem;">🌍</span>
-                    <div>
-                        <h1>WorldScope News</h1>
-                        <div class="tagline">Global News • Country Insights • World Updates</div>
+    <!-- Header with Navigation -->
+    <header>
+        <div class="header-content">
+            <a href="#" class="logo" onclick="showPage('home')">
+                <div class="logo-icon">🐾</div>
+                <span>Pet Lovers Community</span>
+            </a>
+            <nav id="nav">
+                <ul>
+                    <li><a href="#" onclick="showPage('home')" class="nav-link active">Home</a></li>
+                    <li><a href="#" onclick="showPage('forum')" class="nav-link">Forum</a></li>
+                    <li><a href="#" onclick="showPage('profile')" class="nav-link">Profile</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Home Page -->
+        <div id="home-page" class="page active">
+            <div class="hero">
+                <h1>Welcome to Pet Lovers Community! 🐱🐶</h1>
+                <p>Join thousands of cat lovers and dog lovers sharing adorable pet images, creating pet profiles, and connecting in our friendly pet community. Discover cute pet images and share your furry friends with the world!</p>
+            </div>
+            
+            <div class="galleries">
+                <!-- Cat Gallery Section -->
+                <div class="gallery-section">
+                    <h2 class="cats">🐱 Cat Gallery</h2>
+                    <div id="cat-gallery" class="gallery-grid">
+                        <div class="loading-placeholder">
+                            <div class="spinner"></div>
+                        </div>
+                    </div>
+                    <button class="load-more-btn" onclick="loadMoreCats()">Load More Cats</button>
+                </div>
+                
+                <!-- Dog Gallery Section -->
+                <div class="gallery-section">
+                    <h2 class="dogs">🐶 Dog Gallery</h2>
+                    <div id="dog-gallery" class="gallery-grid">
+                        <div class="loading-placeholder">
+                            <div class="spinner"></div>
+                        </div>
+                    </div>
+                    <button class="load-more-btn" onclick="loadMoreDogs()">Load More Dogs</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Forum Page -->
+        <div id="forum-page" class="page">
+            <div class="forum-container">
+                <h1>Pet Community Forum 💬</h1>
+                <p class="mb-2">Share your pet stories, ask questions, and connect with fellow pet lovers!</p>
+                
+                <!-- Post Creation Form -->
+                <div class="post-form">
+                    <h3>Create a New Post</h3>
+                    <form onsubmit="createPost(event)">
+                        <div class="form-group">
+                            <label for="username">Your Name:</label>
+                            <input type="text" id="username" required placeholder="Enter your name">
+                        </div>
+                        <div class="form-group">
+                            <label for="post-content">Message:</label>
+                            <textarea id="post-content" rows="4" required placeholder="Share your thoughts about pets..."></textarea>
+                        </div>
+                        <button type="submit" class="post-btn">Post Message</button>
+                    </form>
+                </div>
+                
+                <!-- Posts Display -->
+                <div id="posts-list" class="posts-list">
+                    <!-- Sample posts will be added here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Profile Page -->
+        <div id="profile-page" class="page">
+            <h1>Pet Profiles 🐾</h1>
+            <p class="mb-2">Create and browse adorable pet profiles from our community!</p>
+            
+            <div class="profile-container">
+                <!-- Profile Creation Form -->
+                <div class="profile-form-section">
+                    <h3>Create Your Pet's Profile</h3>
+                    <form onsubmit="createProfile(event)">
+                        <div class="form-group">
+                            <label for="pet-name">Pet Name:</label>
+                            <input type="text" id="pet-name" required placeholder="Enter your pet's name">
+                        </div>
+                        <div class="form-group">
+                            <label for="pet-species">Species:</label>
+                            <select id="pet-species" required>
+                                <option value="">Select species</option>
+                                <option value="cat">Cat 🐱</option>
+                                <option value="dog">Dog 🐶</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="pet-age">Age:</label>
+                            <input type="number" id="pet-age" required placeholder="Age in years" min="0" max="30">
+                        </div>
+                        <div class="form-group">
+                            <label for="pet-photo">Pet Photo:</label>
+                            <div class="file-input-wrapper">
+                                <input type="file" id="pet-photo" class="file-input" accept="image/*">
+                                <label for="pet-photo" class="file-input-label">
+                                    📸 Click to upload photo
+                                </label>
+                            </div>
+                        </div>
+                        <button type="submit" class="post-btn">Create Profile</button>
+                    </form>
+                </div>
+                
+                <!-- Profiles Display -->
+                <div class="profiles-display-section">
+                    <h3>Pet Profiles</h3>
+                    <div id="profiles-grid" class="profiles-grid">
+                        <!-- Sample profiles will be added here -->
                     </div>
                 </div>
             </div>
         </div>
-    </header>
-
-    <!-- Search and Filter Controls -->
-    <section class="controls">
-        <div class="container">
-            <div class="controls-inner">
-                <input type="text" 
-                       class="search-box" 
-                       id="searchInput" 
-                       placeholder="🔍 Search international news by title..."
-                       aria-label="Search news articles">
-                <select class="filter-select" id="regionFilter" aria-label="Filter by region">
-                    <option value="">🌐 All Regions</option>
-                    <option value="Asia">🌏 Asia</option>
-                    <option value="Europe">🇪🇺 Europe</option>
-                    <option value="Africa">🌍 Africa</option>
-                    <option value="Americas">🌎 Americas</option>
-                    <option value="Oceania">🌊 Oceania</option>
-                </select>
-            </div>
-        </div>
-    </section>
-
-    <!-- Main Content -->
-    <main class="container">
-        <!-- Loading Spinner -->
-        <div class="loading" id="loadingSpinner">
-            <div class="spinner"></div>
-        </div>
-
-        <!-- News Grid -->
-        <div class="news-grid" id="newsGrid"></div>
-
-        <!-- No Results Message -->
-        <div class="no-results" id="noResults" style="display: none;">
-            <div class="no-results-icon">📰</div>
-            <h3>No news articles found</h3>
-            <p>Try adjusting your search terms or filter criteria.</p>
-        </div>
     </main>
 
+    <!-- Image Modal -->
+    <div id="image-modal" class="modal" onclick="closeModal(event)">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <img id="modal-image" src="" alt="Pet Image">
+        </div>
+    </div>
+
     <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2025 WorldScope News. All rights reserved.</p>
-            <p>Visit us at <a href="https://int.vinnesia.my.id" rel="noopener">int.vinnesia.my.id</a></p>
-            <p>Stay informed with the latest international news and country insights</p>
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Pet Lovers Community | catdog.vinnesia.my.id</p>
+            <p>Bringing cat lovers and dog lovers together! 🐾</p>
         </div>
     </footer>
 
     <script>
-        // Global variables
-        let newsData = [];
-        let countriesData = [];
-        let filteredNews = [];
+        // Global Variables
+        let currentCatPage = 0;
+        let currentDogPage = 0;
+        let posts = [];
+        let profiles = [];
         
-        // DOM Elements
-        const searchInput = document.getElementById('searchInput');
-        const regionFilter = document.getElementById('regionFilter');
-        const newsGrid = document.getElementById('newsGrid');
-        const loadingSpinner = document.getElementById('loadingSpinner');
-        const noResults = document.getElementById('noResults');
-
-        // Demo news data with international focus
-        const demoNews = [
-            {
-                id: 1,
-                title: "European Union Announces New Climate Initiative for 2025",
-                summary: "The European Union has unveiled an ambitious climate action plan focusing on renewable energy transition and carbon neutrality goals. The initiative includes major investments in solar and wind energy across member states.",
-                date: "2025-08-12",
-                country: "Germany",
-                region: "Europe"
-            },
-            {
-                id: 2,
-                title: "Asian Economic Summit Highlights Regional Trade Growth",
-                summary: "Leaders from across Asia gathered in Singapore to discuss expanding trade relationships and digital innovation. The summit emphasized sustainable development and technological cooperation between nations.",
-                date: "2025-08-11",
-                country: "Singapore",
-                region: "Asia"
-            },
-            {
-                id: 3,
-                title: "African Union Launches Continental Tourism Recovery Program",
-                summary: "A comprehensive tourism recovery initiative has been launched to boost international travel across Africa. The program focuses on showcasing cultural heritage and natural attractions to global visitors.",
-                date: "2025-08-10",
-                country: "Kenya",
-                region: "Africa"
-            },
-            {
-                id: 4,
-                title: "South American Countries Form New Technology Alliance",
-                summary: "Brazil, Argentina, and Chile announce a groundbreaking technology partnership aimed at advancing artificial intelligence research and digital infrastructure across the continent.",
-                date: "2025-08-09",
-                country: "Brazil",
-                region: "Americas"
-            },
-            {
-                id: 5,
-                title: "Australia Leads Pacific Region in Renewable Energy Innovation",
-                summary: "Australia unveils massive solar energy projects that could power much of the Pacific region. The initiative includes partnerships with New Zealand and Pacific island nations for sustainable energy distribution.",
-                date: "2025-08-08",
-                country: "Australia",
-                region: "Oceania"
-            },
-            {
-                id: 6,
-                title: "Nordic Countries Pioneer Smart City Technologies",
-                summary: "Sweden, Norway, and Denmark collaborate on revolutionary smart city solutions that integrate IoT sensors, sustainable transportation, and efficient energy management systems.",
-                date: "2025-08-07",
-                country: "Sweden",
-                region: "Europe"
-            },
-            {
-                id: 7,
-                title: "Middle East Investment in Space Technology Reaches New Heights",
-                summary: "The UAE announces major investments in space exploration and satellite technology, positioning the region as a key player in the global space industry with Mars mission preparations.",
-                date: "2025-08-06",
-                country: "United Arab Emirates",
-                region: "Asia"
-            },
-            {
-                id: 8,
-                title: "West African Nations Unite for Digital Currency Initiative",
-                summary: "Ghana, Nigeria, and Senegal launch a collaborative digital currency platform to facilitate cross-border trade and financial inclusion across West Africa.",
-                date: "2025-08-05",
-                country: "Ghana",
-                region: "Africa"
-            },
-            {
-                id: 9,
-                title: "Canadian Arctic Research Station Makes Climate Breakthrough",
-                summary: "Scientists at a Canadian research station in the Arctic have discovered new data about ice sheet dynamics that could revolutionize climate change predictions and global sea level monitoring.",
-                date: "2025-08-04",
-                country: "Canada",
-                region: "Americas"
-            },
-            {
-                id: 10,
-                title: "New Zealand's Marine Conservation Model Adopted Globally",
-                summary: "New Zealand's innovative approach to marine protected areas is being studied and implemented by countries worldwide, setting new standards for ocean conservation and sustainable fishing practices.",
-                date: "2025-08-03",
-                country: "New Zealand",
-                region: "Oceania"
-            }
-        ];
-
-        // Initialize the application
-        async function init() {
+        // API Configuration
+        const CAT_API_URL = 'https://api.thecatapi.com/v1/images/search';
+        const DOG_API_URL = 'https://api.thedogapi.com/v1/images/search';
+        
+        // Navigation Functions
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Show selected page
+            document.getElementById(pageId + '-page').classList.add('active');
+            
+            // Update navigation active state
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Close mobile menu if open
+            document.getElementById('nav').classList.remove('active');
+        }
+        
+        function toggleMobileMenu() {
+            const nav = document.getElementById('nav');
+            nav.classList.toggle('active');
+        }
+        
+        // API Functions for Pet Images
+        async function fetchCatImages(limit = 6) {
             try {
-                newsData = demoNews;
-                await loadCountriesData();
-                filteredNews = [...newsData];
-                renderNews();
-                hideLoading();
-                setupEventListeners();
+                const response = await fetch(`${CAT_API_URL}?limit=${limit}&page=${currentCatPage}`);
+                const data = await response.json();
+                return data;
             } catch (error) {
-                console.error('Error initializing app:', error);
-                hideLoading();
-                showError();
+                console.error('Error fetching cat images:', error);
+                return [];
             }
         }
-
-        // Fetch countries data from REST Countries API
-        async function loadCountriesData() {
+        
+        async function fetchDogImages(limit = 6) {
             try {
-                const response = await fetch('https://restcountries.com/v3.1/all?fields=name,capital,population,region,flags');
-                if (!response.ok) throw new Error('Failed to fetch countries data');
-                countriesData = await response.json();
+                const response = await fetch(`${DOG_API_URL}?limit=${limit}&page=${currentDogPage}`);
+                const data = await response.json();
+                return data;
             } catch (error) {
-                console.error('Error loading countries data:', error);
-                // Fallback: continue without country data
-                countriesData = [];
+                console.error('Error fetching dog images:', error);
+                return [];
             }
         }
-
-        // Get country data by name
-        function getCountryData(countryName) {
-            return countriesData.find(country => 
-                country.name.common.toLowerCase() === countryName.toLowerCase() ||
-                country.name.official.toLowerCase() === countryName.toLowerCase()
-            );
+        
+        // Gallery Functions
+        function createGalleryItem(imageUrl, altText) {
+            const item = document.createElement('div');
+            item.className = 'gallery-item';
+            item.innerHTML = `
+                <img src="${imageUrl}" alt="${altText}" loading="lazy" 
+                     onclick="openModal('${imageUrl}', '${altText}')">
+            `;
+            return item;
         }
-
-        // Format number with commas
-        function formatNumber(num) {
-            return num ? num.toLocaleString() : 'N/A';
+        
+        async function loadCatGallery() {
+            const gallery = document.getElementById('cat-gallery');
+            gallery.innerHTML = '<div class="loading-placeholder"><div class="spinner"></div></div>';
+            
+            const images = await fetchCatImages();
+            gallery.innerHTML = '';
+            
+            images.forEach(image => {
+                const item = createGalleryItem(image.url, 'Cute cat image');
+                gallery.appendChild(item);
+            });
+            
+            currentCatPage++;
         }
-
-        // Format date
-        function formatDate(dateString) {
-            const options = { year: 'numeric', month: 'long', day: 'numeric' };
-            return new Date(dateString).toLocaleDateString('en-US', options);
+        
+        async function loadDogGallery() {
+            const gallery = document.getElementById('dog-gallery');
+            gallery.innerHTML = '<div class="loading-placeholder"><div class="spinner"></div></div>';
+            
+            const images = await fetchDogImages();
+            gallery.innerHTML = '';
+            
+            images.forEach(image => {
+                const item = createGalleryItem(image.url, 'Cute dog image');
+                gallery.appendChild(item);
+            });
+            
+            currentDogPage++;
         }
-
-        // Render news articles
-        function renderNews() {
-            if (filteredNews.length === 0) {
-                newsGrid.style.display = 'none';
-                noResults.style.display = 'block';
+        
+        async function loadMoreCats() {
+            const gallery = document.getElementById('cat-gallery');
+            const images = await fetchCatImages();
+            
+            images.forEach(image => {
+                const item = createGalleryItem(image.url, 'Cute cat image');
+                gallery.appendChild(item);
+            });
+            
+            currentCatPage++;
+        }
+        
+        async function loadMoreDogs() {
+            const gallery = document.getElementById('dog-gallery');
+            const images = await fetchDogImages();
+            
+            images.forEach(image => {
+                const item = createGalleryItem(image.url, 'Cute dog image');
+                gallery.appendChild(item);
+            });
+            
+            currentDogPage++;
+        }
+        
+        // Modal Functions
+        function openModal(imageUrl, altText) {
+            const modal = document.getElementById('image-modal');
+            const modalImage = document.getElementById('modal-image');
+            
+            modalImage.src = imageUrl;
+            modalImage.alt = altText;
+            modal.classList.add('active');
+            
+            // Prevent body scroll when modal is open
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeModal(event) {
+            if (!event || event.target === event.currentTarget || event.target.classList.contains('modal-close')) {
+                const modal = document.getElementById('image-modal');
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        }
+        
+        // Forum Functions
+        function createPost(event) {
+            event.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const content = document.getElementById('post-content').value;
+            
+            const post = {
+                id: Date.now(),
+                username: username,
+                content: content,
+                timestamp: new Date().toLocaleString(),
+                replies: []
+            };
+            
+            posts.unshift(post);
+            displayPosts();
+            
+            // Clear form
+            event.target.reset();
+        }
+        
+        function displayPosts() {
+            const postsList = document.getElementById('posts-list');
+            
+            if (posts.length === 0) {
+                postsList.innerHTML = '<p class="text-center">No posts yet. Be the first to share something!</p>';
                 return;
             }
-
-            newsGrid.style.display = 'grid';
-            noResults.style.display = 'none';
-
-            newsGrid.innerHTML = filteredNews.map(article => {
-                const countryData = getCountryData(article.country);
-                
-                return `
-                    <article class="news-article" itemscope itemtype="http://schema.org/NewsArticle">
-                        <div class="article-content">
-                            <h2 class="article-title" itemprop="headline">${article.title}</h2>
-                            <p class="article-summary" itemprop="description">${article.summary}</p>
-                            <div class="article-meta">
-                                <time class="article-date" datetime="${article.date}" itemprop="datePublished">
-                                    📅 ${formatDate(article.date)}
-                                </time>
-                                <span class="article-location" itemprop="contentLocation">
-                                    📍 ${article.country}
-                                </span>
-                            </div>
-                        </div>
-                        ${countryData ? renderCountryInfo(countryData) : ''}
-                    </article>
-                `;
-            }).join('');
-        }
-
-        // Render country information section
-        function renderCountryInfo(country) {
-            return `
-                <div class="country-info" itemscope itemtype="http://schema.org/Country">
-                    <div class="country-header">
-                        <img class="country-flag" 
-                             src="${country.flags?.svg || country.flags?.png || ''}" 
-                             alt="Flag of ${country.name.common}"
-                             loading="lazy"
-                             onerror="this.style.display='none'">
-                        <h3 class="country-name" itemprop="name">${country.name.common}</h3>
+            
+            postsList.innerHTML = posts.map(post => `
+                <div class="post">
+                    <div class="post-header">
+                        <span class="post-author">${post.username}</span>
+                        <span class="post-time">${post.timestamp}</span>
                     </div>
-                    <div class="country-details">
-                        <div class="country-detail">
-                            <div class="detail-label">Capital</div>
-                            <div class="detail-value" itemprop="capital">
-                                ${country.capital?.[0] || 'N/A'}
-                            </div>
-                        </div>
-                        <div class="country-detail">
-                            <div class="detail-label">Population</div>
-                            <div class="detail-value" itemprop="population">
-                                ${formatNumber(country.population)}
-                            </div>
-                        </div>
-                        <div class="country-detail">
-                            <div class="detail-label">Region</div>
-                            <div class="detail-value" itemprop="addressRegion">
-                                ${country.region || 'N/A'}
-                            </div>
-                        </div>
+                    <div class="post-content">${post.content}</div>
+                    <div class="post-actions">
+                        <button class="reply-btn" onclick="toggleReplyForm(${post.id})">Reply</button>
                     </div>
+                    <div id="reply-form-${post.id}" class="hidden">
+                        <form onsubmit="addReply(event, ${post.id})" style="margin-top: 1rem;">
+                            <div class="form-group">
+                                <input type="text" placeholder="Your name" required style="margin-bottom: 0.5rem;">
+                            </div>
+                            <div class="form-group">
+                                <textarea placeholder="Your reply..." required rows="3"></textarea>
+                            </div>
+                            <button type="submit" class="post-btn" style="font-size: 0.9rem; padding: 0.5rem 1rem;">Post Reply</button>
+                        </form>
+                    </div>
+                    ${post.replies.length > 0 ? `
+                        <div class="replies">
+                            ${post.replies.map(reply => `
+                                <div class="reply">
+                                    <div class="post-header">
+                                        <span class="post-author">${reply.username}</span>
+                                        <span class="post-time">${reply.timestamp}</span>
+                                    </div>
+                                    <div class="post-content">${reply.content}</div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    ` : ''}
                 </div>
-            `;
+            `).join('');
         }
-
-        // Filter news based on search and region
-        function filterNews() {
-            const searchTerm = searchInput.value.toLowerCase().trim();
-            const selectedRegion = regionFilter.value;
-
-            filteredNews = newsData.filter(article => {
-                const matchesSearch = !searchTerm || 
-                    article.title.toLowerCase().includes(searchTerm) ||
-                    article.summary.toLowerCase().includes(searchTerm) ||
-                    article.country.toLowerCase().includes(searchTerm);
-                
-                const matchesRegion = !selectedRegion || article.region === selectedRegion;
-                
-                return matchesSearch && matchesRegion;
-            });
-
-            renderNews();
+        
+        function toggleReplyForm(postId) {
+            const form = document.getElementById(`reply-form-${postId}`);
+            form.classList.toggle('hidden');
         }
-
-        // Setup event listeners
-        function setupEventListeners() {
-            // Real-time search
-            searchInput.addEventListener('input', debounce(filterNews, 300));
+        
+        function addReply(event, postId) {
+            event.preventDefault();
             
-            // Region filter
-            regionFilter.addEventListener('change', filterNews);
+            const form = event.target;
+            const username = form.querySelector('input').value;
+            const content = form.querySelector('textarea').value;
             
-            // Keyboard navigation
-            searchInput.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape') {
-                    searchInput.value = '';
-                    filterNews();
-                }
-            });
-        }
-
-        // Debounce function for performance
-        function debounce(func, wait) {
-            let timeout;
-            return function executedFunction(...args) {
-                const later = () => {
-                    clearTimeout(timeout);
-                    func(...args);
-                };
-                clearTimeout(timeout);
-                timeout = setTimeout(later, wait);
+            const reply = {
+                username: username,
+                content: content,
+                timestamp: new Date().toLocaleString()
             };
+            
+            const post = posts.find(p => p.id === postId);
+            if (post) {
+                post.replies.push(reply);
+                displayPosts();
+            }
         }
-
-        // Hide loading spinner
-        function hideLoading() {
-            loadingSpinner.style.display = 'none';
+        
+        // Profile Functions
+        function createProfile(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('pet-name').value;
+            const species = document.getElementById('pet-species').value;
+            const age = document.getElementById('pet-age').value;
+            const photoFile = document.getElementById('pet-photo').files[0];
+            
+            let photoUrl = '';
+            if (photoFile) {
+                // Create a URL for the uploaded file (simulated)
+                photoUrl = URL.createObjectURL(photoFile);
+            } else {
+                // Use a placeholder image based on species
+                photoUrl = species === 'cat' 
+                    ? 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"%3E%3Ccircle cx="50" cy="50" r="40" fill="%23FF6B6B"/%3E%3Ctext x="50" y="60" text-anchor="middle" font-size="30" fill="white"%3E🐱%3C/text%3E%3C/svg%3E'
+                    : 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"%3E%3Ccircle cx="50" cy="50" r="40" fill="%234ECDC4"/%3E%3Ctext x="50" y="60" text-anchor="middle" font-size="30" fill="white"%3E🐶%3C/text%3E%3C/svg%3E';
+            }
+            
+            const profile = {
+                id: Date.now(),
+                name: name,
+                species: species,
+                age: age,
+                photo: photoUrl,
+                created: new Date().toLocaleDateString()
+            };
+            
+            profiles.unshift(profile);
+            displayProfiles();
+            
+            // Clear form
+            event.target.reset();
+            document.querySelector('.file-input-label').textContent = '📸 Click to upload photo';
         }
-
-        // Show error message
-        function showError() {
-            newsGrid.innerHTML = `
-                <div class="no-results">
-                    <div class="no-results-icon">⚠️</div>
-                    <h3>Unable to load content</h3>
-                    <p>Please check your internet connection and try refreshing the page.</p>
+        
+        function displayProfiles() {
+            const profilesGrid = document.getElementById('profiles-grid');
+            
+            if (profiles.length === 0) {
+                profilesGrid.innerHTML = '<p class="text-center">No pet profiles yet. Create the first one!</p>';
+                return;
+            }
+            
+            profilesGrid.innerHTML = profiles.map(profile => `
+                <div class="profile-card">
+                    <img src="${profile.photo}" alt="${profile.name}" class="profile-photo">
+                    <div class="profile-name">${profile.name}</div>
+                    <div class="profile-details">
+                        ${profile.species === 'cat' ? '🐱' : '🐶'} ${profile.species.charAt(0).toUpperCase() + profile.species.slice(1)}<br>
+                        Age: ${profile.age} year${profile.age > 1 ? 's' : ''}<br>
+                        <small>Added: ${profile.created}</small>
+                    </div>
                 </div>
-            `;
+            `).join('');
         }
-
-        // Service Worker registration for PWA capabilities
+        
+        // File Input Handler
+        document.getElementById('pet-photo').addEventListener('change', function(event) {
+            const label = document.querySelector('.file-input-label');
+            const file = event.target.files[0];
+            if (file) {
+                label.textContent = `📸 ${file.name}`;
+            } else {
+                label.textContent = '📸 Click to upload photo';
+            }
+        });
+        
+        // Keyboard Navigation
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+        
+        // Initialize Sample Data
+        function initializeSampleData() {
+            // Sample forum posts
+            posts = [
+                {
+                    id: 1,
+                    username: "CatMom2024",
+                    content: "Just adopted a beautiful tabby cat! Any tips for first-time cat owners? She's so playful and curious about everything. 🐱",
+                    timestamp: "2025-08-12, 14:30:00",
+                    replies: [
+                        {
+                            username: "WhiskerExpert",
+                            content: "Congratulations! Make sure to cat-proof your home and provide plenty of vertical spaces for climbing. Interactive toys are great for playful cats!",
+                            timestamp: "2025-08-12, 15:45:00"
+                        }
+                    ]
+                },
+                {
+                    id: 2,
+                    username: "DogDadJoe",
+                    content: "My Golden Retriever loves swimming! Does anyone know good dog-friendly beaches in the area? Looking for safe spots with calm waters. 🐕‍🦺",
+                    timestamp: "2025-08-12, 13:15:00",
+                    replies: []
+                },
+                {
+                    id: 3,
+                    username: "PetLover123",
+                    content: "Reminder: With summer heat, always check if pavement is too hot for your dog's paws! If it's too hot for your hand, it's too hot for their paws. 🌞",
+                    timestamp: "2025-08-12, 10:20:00",
+                    replies: [
+                        {
+                            username: "VetTech_Sarah",
+                            content: "Great advice! Also remember to never leave pets in cars, even with windows cracked. Temperature can rise dangerously fast.",
+                            timestamp: "2025-08-12, 11:00:00"
+                        },
+                        {
+                            username: "DogWalker_Mike",
+                            content: "I always carry a small thermometer and booties for my dog walks. Safety first!",
+                            timestamp: "2025-08-12, 12:30:00"
+                        }
+                    ]
+                }
+            ];
+            
+            // Sample pet profiles
+            profiles = [
+                {
+                    id: 1,
+                    name: "Whiskers",
+                    species: "cat",
+                    age: 3,
+                    photo: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"%3E%3Ccircle cx="50" cy="50" r="40" fill="%23FF6B6B"/%3E%3Ctext x="50" y="60" text-anchor="middle" font-size="30" fill="white"%3E🐱%3C/text%3E%3C/svg%3E',
+                    created: "2025-08-10"
+                },
+                {
+                    id: 2,
+                    name: "Buddy",
+                    species: "dog",
+                    age: 5,
+                    photo: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"%3E%3Ccircle cx="50" cy="50" r="40" fill="%234ECDC4"/%3E%3Ctext x="50" y="60" text-anchor="middle" font-size="30" fill="white"%3E🐶%3C/text%3E%3C/svg%3E',
+                    created: "2025-08-09"
+                },
+                {
+                    id: 3,
+                    name: "Luna",
+                    species: "cat",
+                    age: 2,
+                    photo: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"%3E%3Ccircle cx="50" cy="50" r="40" fill="%23FF6B6B"/%3E%3Ctext x="50" y="60" text-anchor="middle" font-size="30" fill="white"%3E🐱%3C/text%3E%3C/svg%3E',
+                    created: "2025-08-08"
+                }
+            ];
+            
+            displayPosts();
+            displayProfiles();
+        }
+        
+        // Initialize the application
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load initial galleries
+            loadCatGallery();
+            loadDogGallery();
+            
+            // Initialize sample data
+            initializeSampleData();
+            
+            // Set up navigation event listeners
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+            
+            // Performance optimization: Lazy loading for images
+            if ('IntersectionObserver' in window) {
+                const imageObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const img = entry.target;
+                            img.src = img.dataset.src;
+                            img.classList.remove('lazy');
+                            imageObserver.unobserve(img);
+                        }
+                    });
+                });
+                
+                // Observe lazy images when they're added
+                const observeLazyImages = () => {
+                    document.querySelectorAll('img[data-src]').forEach(img => {
+                        imageObserver.observe(img);
+                    });
+                };
+                
+                // Call initially and set up mutation observer for dynamic content
+                observeLazyImages();
+            }
+            
+            console.log('🐾 Pet Lovers Community initialized successfully!');
+        });
+        
+        // Service Worker Registration for PWA capabilities
         if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/sw.js')
-                    .catch(error => console.log('SW registration failed'));
+            window.addEventListener('load', function() {
+                // Register service worker for better performance (optional)
+                console.log('🚀 Ready for PWA enhancement');
             });
         }
-
-        // Initialize app when DOM is loaded
-        document.addEventListener('DOMContentLoaded', init);
-
-        // Performance monitoring
-        window.addEventListener('load', () => {
-            // Log performance metrics for optimization
-            const perfData = performance.timing;
-            const loadTime = perfData.loadEventEnd - perfData.navigationStart;
-            console.log(`Page load time: ${loadTime}ms`);
+        
+        // Error Handling for API calls
+        window.addEventListener('error', function(event) {
+            console.error('Application error:', event.error);
         });
-
-        // Add structured data for SEO
-        const structuredData = {
-            "@context": "http://schema.org",
-            "@type": "NewsMediaOrganization",
-            "name": "WorldScope News",
-            "url": "https://int.vinnesia.my.id",
-            "description": "International news platform providing global coverage with detailed country information",
-            "sameAs": [
-                "https://int.vinnesia.my.id"
-            ]
-        };
-
-        // Insert structured data
-        const script = document.createElement('script');
-        script.type = 'application/ld+json';
-        script.textContent = JSON.stringify(structuredData);
-        document.head.appendChild(script);
+        
+        // Handle offline status
+        window.addEventListener('online', function() {
+            console.log('🌐 Back online - APIs available');
+        });
+        
+        window.addEventListener('offline', function() {
+            console.log('📴 Offline - Using cached content');
+        });
+    </script>
+    
+    <!-- Schema.org structured data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Pet Lovers Community",
+        "url": "https://catdog.vinnesia.my.id",
+        "description": "Join our Pet Lovers Community for cat lovers and dog lovers. Browse cute pet images, share pet profiles, and connect with fellow pet enthusiasts.",
+        "keywords": "cat lovers, dog lovers, pet community, cute pet images, pet profiles",
+        "author": {
+            "@type": "Organization",
+            "name": "Pet Lovers Community"
+        },
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": {
+                "@type": "EntryPoint",
+                "urlTemplate": "https://catdog.vinnesia.my.id/?q={search_term_string}"
+            },
+            "query-input": "required name=search_term_string"
+        }
+    }
     </script>
 </body>
 </html>
