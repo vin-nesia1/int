@@ -599,13 +599,10 @@
             width: 60%;
         }
         
-        /* Load More Section */
-        .load-more-section {
-            text-align: center;
-            padding: 3rem 0;
-        }
-        
+        /* Load More Button - Enhanced */
         .load-more-btn {
+            display: block;
+            margin: 2rem auto;
             padding: 1rem 3rem;
             font-size: 1.1rem;
             background: var(--accent);
@@ -616,6 +613,8 @@
             font-weight: 600;
             transition: var(--transition);
             box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
         }
         
         .load-more-btn:hover {
@@ -627,6 +626,82 @@
             opacity: 0.5;
             cursor: not-allowed;
             transform: none;
+        }
+        
+        .load-more-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .load-more-btn:hover::before {
+            left: 100%;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { 
+                transform: scale(1); 
+                box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            }
+            50% { 
+                transform: scale(1.05); 
+                box-shadow: 0 8px 30px rgba(255, 107, 107, 0.3);
+            }
+        }
+        
+        /* Footer Enhancement */
+        footer {
+            background: linear-gradient(135deg, var(--text) 0%, #34495e 100%);
+            color: var(--white);
+            padding: 3rem 2rem 2rem;
+            margin-top: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #FF6B6B, #4ECDC4, #FFE066, #FF6B9D);
+        }
+        
+        /* Scroll to Top Button */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .scroll-top:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
         }
         
         /* Modal */
@@ -942,8 +1017,14 @@
             <button class="load-more-btn" onclick="loadMoreWallpapers()">
                 Load More Amazing Wallpapers 📸
             </button>
+            <p style="margin-top: 1rem; color: var(--text-light); font-size: 0.9rem;">
+                💡 <strong>Tip:</strong> Infinite scroll stops after 3 auto-loads so you can reach the footer easily!
+            </p>
         </div>
     </main>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-top" id="scroll-top" onclick="scrollToTop()">↑</button>
 
     <!-- Modal for Full Image View -->
     <div id="image-modal" class="modal" onclick="closeModal(event)">
@@ -969,13 +1050,21 @@
         <div class="footer-content">
             <p class="footer-text">🐾 Pet Wallpaper Paradise - Your source for premium pet wallpapers</p>
             <div class="footer-links">
-                <a href="#about">About</a>
-                <a href="#privacy">Privacy</a>
-                <a href="#contact">Contact</a>
-                <a href="#api">API</a>
+                <a href="#about" onclick="showNotification('📧 Contact: hello@catdog.vinnesia.my.id', 'info')">About</a>
+                <a href="#privacy" onclick="showNotification('🔒 We respect your privacy! No data collected.', 'success')">Privacy</a>
+                <a href="#contact" onclick="showNotification('💌 Email us at: support@catdog.vinnesia.my.id', 'info')">Contact</a>
+                <a href="#api" onclick="showNotification('⚡ Powered by The Cat API & The Dog API', 'success')">API</a>
             </div>
             <p>&copy; 2025 Pet Wallpaper Paradise | catdog.vinnesia.my.id</p>
             <p><small>All images are royalty-free and sourced from The Cat API & The Dog API</small></p>
+            <div style="margin-top: 2rem;">
+                <button onclick="scrollToTop()" style="background: var(--primary); color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 8px; cursor: pointer; margin-right: 1rem;">
+                    ⬆️ Back to Top
+                </button>
+                <button onclick="cycleLogo()" style="background: var(--secondary); color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 8px; cursor: pointer;">
+                    🎨 Change Logo
+                </button>
+            </div>
         </div>
     </footer>
 
@@ -1525,6 +1614,7 @@
                 setupSearch();
                 setupNavigation();
                 setupScrollEffects();
+                setupScrollTop();
                 
                 // Load initial data
                 const [cats, dogs] = await Promise.all([
@@ -1565,6 +1655,7 @@
         function setupScrollEffects() {
             let lastScroll = 0;
             const header = $('header');
+            const scrollTopBtn = $('#scroll-top');
             
             window.addEventListener('scroll', () => {
                 const currentScroll = window.pageYOffset;
@@ -1576,21 +1667,48 @@
                     header.classList.remove('scrolled');
                 }
                 
+                // Show/hide scroll to top button
+                if (scrollTopBtn) {
+                    if (currentScroll > 500) {
+                        scrollTopBtn.classList.add('visible');
+                    } else {
+                        scrollTopBtn.classList.remove('visible');
+                    }
+                }
+                
                 lastScroll = currentScroll;
             }, { passive: true });
         }
         
-        // Setup infinite scroll
+        // Setup infinite scroll with limits
         function setupInfiniteScroll() {
+            let loadCount = 0;
+            const maxLoads = 3; // Limit auto-loading to prevent endless scroll
+            
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
-                    if (entry.isIntersecting && !state.loading) {
+                    if (entry.isIntersecting && !state.loading && loadCount < maxLoads) {
                         loadMoreWallpapers();
+                        loadCount++;
+                        
+                        // Show message when reaching limit
+                        if (loadCount >= maxLoads) {
+                            setTimeout(() => {
+                                showNotification('📜 Scroll to footer or click "Load More" for additional wallpapers!', 'info');
+                                
+                                // Show the load more button prominently
+                                const loadMoreBtn = $('.load-more-btn');
+                                if (loadMoreBtn) {
+                                    loadMoreBtn.style.animation = 'pulse 2s infinite';
+                                    loadMoreBtn.innerHTML = '🎯 Click for More Wallpapers! (Auto-load disabled)';
+                                }
+                            }, 1000);
+                        }
                     }
                 });
             }, { 
                 threshold: 0.1,
-                rootMargin: '100px 0px 0px 0px' // Load before reaching the element
+                rootMargin: '100px 0px 0px 0px'
             });
             
             const loadMoreSection = $('.load-more-section');
