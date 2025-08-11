@@ -291,6 +291,184 @@
             margin-bottom: 1rem;
         }
         
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+        }
+        
+        .modal-content {
+            background: white;
+            margin: 5% auto;
+            padding: 0;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 85vh;
+            overflow-y: auto;
+            position: relative;
+            animation: modalSlideIn 0.3s ease;
+        }
+        
+        @keyframes modalSlideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        .modal-header {
+            position: relative;
+            height: 250px;
+            overflow: hidden;
+            border-radius: 20px 20px 0 0;
+        }
+        
+        .modal-flag {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .modal-close:hover {
+            background: rgba(0, 0, 0, 0.9);
+            transform: scale(1.1);
+        }
+        
+        .modal-body {
+            padding: 2rem;
+        }
+        
+        .modal-country-name {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .modal-info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .modal-info-section {
+            background: #f8f9ff;
+            padding: 1.5rem;
+            border-radius: 15px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .modal-section-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .modal-info-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #e1e5e9;
+        }
+        
+        .modal-info-item:last-child {
+            border-bottom: none;
+        }
+        
+        .modal-info-label {
+            font-weight: 600;
+            color: #555;
+        }
+        
+        .modal-info-value {
+            color: #333;
+            font-weight: 500;
+            text-align: right;
+        }
+        
+        .modal-languages {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .language-tag {
+            background: #667eea;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        
+        .modal-currencies {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .currency-tag {
+            background: #764ba2;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        
+        /* Mobile Modal Styles */
+        @media (max-width: 768px) {
+            .modal-content {
+                width: 95%;
+                margin: 2% auto;
+                max-height: 95vh;
+            }
+            
+            .modal-country-name {
+                font-size: 2rem;
+            }
+            
+            .modal-info-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .modal-body {
+                padding: 1.5rem;
+            }
+        }
+        
         /* Footer */
         .footer {
             background: rgba(0, 0, 0, 0.8);
@@ -418,6 +596,83 @@
         </div>
     </main>
 
+    <!-- Country Detail Modal -->
+    <div id="countryModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <img id="modalFlag" src="" alt="" class="modal-flag">
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h2 id="modalCountryName" class="modal-country-name"></h2>
+                
+                <div class="modal-info-grid">
+                    <!-- Basic Information -->
+                    <div class="modal-info-section">
+                        <div class="modal-section-title">
+                            🏛️ Basic Information
+                        </div>
+                        <div class="modal-info-item">
+                            <span class="modal-info-label">Official Name:</span>
+                            <span class="modal-info-value" id="modalOfficialName">-</span>
+                        </div>
+                        <div class="modal-info-item">
+                            <span class="modal-info-label">Capital:</span>
+                            <span class="modal-info-value" id="modalCapital">-</span>
+                        </div>
+                        <div class="modal-info-item">
+                            <span class="modal-info-label">Region:</span>
+                            <span class="modal-info-value" id="modalRegion">-</span>
+                        </div>
+                        <div class="modal-info-item">
+                            <span class="modal-info-label">Subregion:</span>
+                            <span class="modal-info-value" id="modalSubregion">-</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Demographics -->
+                    <div class="modal-info-section">
+                        <div class="modal-section-title">
+                            👥 Demographics
+                        </div>
+                        <div class="modal-info-item">
+                            <span class="modal-info-label">Population:</span>
+                            <span class="modal-info-value" id="modalPopulation">-</span>
+                        </div>
+                        <div class="modal-info-item">
+                            <span class="modal-info-label">Area:</span>
+                            <span class="modal-info-value" id="modalArea">-</span>
+                        </div>
+                        <div class="modal-info-item">
+                            <span class="modal-info-label">Density:</span>
+                            <span class="modal-info-value" id="modalDensity">-</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Languages & Culture -->
+                    <div class="modal-info-section">
+                        <div class="modal-section-title">
+                            🗣️ Languages
+                        </div>
+                        <div id="modalLanguages" class="modal-languages">
+                            <!-- Languages will be inserted here -->
+                        </div>
+                    </div>
+                    
+                    <!-- Economy -->
+                    <div class="modal-info-section">
+                        <div class="modal-section-title">
+                            💰 Economy
+                        </div>
+                        <div id="modalCurrencies" class="modal-currencies">
+                            <!-- Currencies will be inserted here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
@@ -445,9 +700,8 @@
         
         // API Configuration - Multiple endpoints for reliability
         const API_URLS = [
-            'https://restcountries.com/v3.1/all?fields=name,capital,population,region,flags,cca3',
             'https://restcountries.com/v3.1/all',
-            'https://restcountries.com/v2/all?fields=name,capital,population,region,flag,alpha3Code'
+            'https://restcountries.com/v2/all'
         ];
         
         // Initialize Application
@@ -498,25 +752,35 @@
                     console.log('Successfully fetched data:', data.length, 'countries');
                     
                     // Process data based on API version
-                    if (i === 2) {
+                    if (i === 1) {
                         // REST Countries v2 format
                         allCountries = data.map(country => ({
                             name: country.name || 'Unknown',
+                            officialName: country.nativeName || country.name || 'Unknown',
                             capital: country.capital || 'No capital',
                             population: country.population || 0,
                             region: country.region || 'Unknown',
+                            subregion: country.subregion || 'Unknown',
+                            area: country.area || 0,
                             flag: country.flag || '',
-                            code: country.alpha3Code || ''
+                            code: country.alpha3Code || '',
+                            languages: country.languages || [],
+                            currencies: country.currencies || []
                         }));
                     } else {
                         // REST Countries v3 format
                         allCountries = data.map(country => ({
-                            name: country.name?.common || country.name || 'Unknown',
+                            name: country.name?.common || 'Unknown',
+                            officialName: country.name?.official || country.name?.common || 'Unknown',
                             capital: Array.isArray(country.capital) ? country.capital[0] : (country.capital || 'No capital'),
                             population: country.population || 0,
                             region: country.region || 'Unknown',
-                            flag: country.flags?.png || country.flags?.svg || country.flag || '',
-                            code: country.cca3 || country.alpha3Code || ''
+                            subregion: country.subregion || 'Unknown',
+                            area: country.area || 0,
+                            flag: country.flags?.png || country.flags?.svg || '',
+                            code: country.cca3 || '',
+                            languages: country.languages || {},
+                            currencies: country.currencies || {}
                         }));
                     }
                     
@@ -548,67 +812,107 @@
             allCountries = [
                 {
                     name: 'Indonesia',
+                    officialName: 'Republic of Indonesia',
                     capital: 'Jakarta',
                     population: 273523615,
                     region: 'Asia',
+                    subregion: 'South-Eastern Asia',
+                    area: 1904569,
                     flag: 'https://flagcdn.com/w320/id.png',
-                    code: 'IDN'
+                    code: 'IDN',
+                    languages: { ind: 'Indonesian' },
+                    currencies: { IDR: { name: 'Indonesian rupiah', symbol: 'Rp' } }
                 },
                 {
                     name: 'United States',
+                    officialName: 'United States of America',
                     capital: 'Washington D.C.',
                     population: 331002651,
                     region: 'Americas',
+                    subregion: 'Northern America',
+                    area: 9372610,
                     flag: 'https://flagcdn.com/w320/us.png',
-                    code: 'USA'
+                    code: 'USA',
+                    languages: { eng: 'English' },
+                    currencies: { USD: { name: 'United States dollar', symbol: '$' } }
                 },
                 {
                     name: 'Japan',
+                    officialName: 'Japan',
                     capital: 'Tokyo',
                     population: 125836021,
                     region: 'Asia',
+                    subregion: 'Eastern Asia',
+                    area: 377930,
                     flag: 'https://flagcdn.com/w320/jp.png',
-                    code: 'JPN'
+                    code: 'JPN',
+                    languages: { jpn: 'Japanese' },
+                    currencies: { JPY: { name: 'Japanese yen', symbol: '¥' } }
                 },
                 {
                     name: 'Germany',
+                    officialName: 'Federal Republic of Germany',
                     capital: 'Berlin',
                     population: 83783942,
                     region: 'Europe',
+                    subregion: 'Western Europe',
+                    area: 357114,
                     flag: 'https://flagcdn.com/w320/de.png',
-                    code: 'DEU'
+                    code: 'DEU',
+                    languages: { deu: 'German' },
+                    currencies: { EUR: { name: 'Euro', symbol: '€' } }
                 },
                 {
                     name: 'Australia',
+                    officialName: 'Commonwealth of Australia',
                     capital: 'Canberra',
                     population: 25499884,
                     region: 'Oceania',
+                    subregion: 'Australia and New Zealand',
+                    area: 7692024,
                     flag: 'https://flagcdn.com/w320/au.png',
-                    code: 'AUS'
+                    code: 'AUS',
+                    languages: { eng: 'English' },
+                    currencies: { AUD: { name: 'Australian dollar', symbol: '$' } }
                 },
                 {
                     name: 'Brazil',
+                    officialName: 'Federative Republic of Brazil',
                     capital: 'Brasília',
                     population: 212559417,
                     region: 'Americas',
+                    subregion: 'South America',
+                    area: 8515767,
                     flag: 'https://flagcdn.com/w320/br.png',
-                    code: 'BRA'
+                    code: 'BRA',
+                    languages: { por: 'Portuguese' },
+                    currencies: { BRL: { name: 'Brazilian real', symbol: 'R$' } }
                 },
                 {
                     name: 'Nigeria',
+                    officialName: 'Federal Republic of Nigeria',
                     capital: 'Abuja',
                     population: 206139589,
                     region: 'Africa',
+                    subregion: 'Western Africa',
+                    area: 923768,
                     flag: 'https://flagcdn.com/w320/ng.png',
-                    code: 'NGA'
+                    code: 'NGA',
+                    languages: { eng: 'English' },
+                    currencies: { NGN: { name: 'Nigerian naira', symbol: '₦' } }
                 },
                 {
                     name: 'United Kingdom',
+                    officialName: 'United Kingdom of Great Britain and Northern Ireland',
                     capital: 'London',
                     population: 67886011,
                     region: 'Europe',
+                    subregion: 'Northern Europe',
+                    area: 242495,
                     flag: 'https://flagcdn.com/w320/gb.png',
-                    code: 'GBR'
+                    code: 'GBR',
+                    languages: { eng: 'English' },
+                    currencies: { GBP: { name: 'British pound', symbol: '£' } }
                 }
             ];
             
@@ -711,10 +1015,9 @@
                 </div>
             `;
             
-            // Add click event for potential future expansion
+            // Add click event for country details modal
             card.addEventListener('click', () => {
-                console.log(`Clicked on ${country.name}`);
-                // Future: Show detailed modal or navigate to country page
+                showCountryModal(country);
             });
             
             return card;
@@ -733,13 +1036,85 @@
             statsSection.style.display = 'block';
         }
         
-        // Format Large Numbers (e.g., 1.2B, 45.6M)
-        function formatLargeNumber(num) {
-            if (num >= 1e9) return (num / 1e9).toFixed(1) + 'B';
-            if (num >= 1e6) return (num / 1e6).toFixed(1) + 'M';
-            if (num >= 1e3) return (num / 1e3).toFixed(1) + 'K';
-            return num.toLocaleString();
+        // Show Country Detail Modal
+        function showCountryModal(country) {
+            const modal = document.getElementById('countryModal');
+            
+            // Update modal content
+            document.getElementById('modalFlag').src = country.flag;
+            document.getElementById('modalFlag').alt = `Flag of ${country.name}`;
+            document.getElementById('modalCountryName').textContent = country.name;
+            document.getElementById('modalOfficialName').textContent = country.officialName || country.name;
+            document.getElementById('modalCapital').textContent = country.capital;
+            document.getElementById('modalRegion').textContent = country.region;
+            document.getElementById('modalSubregion').textContent = country.subregion || 'Unknown';
+            document.getElementById('modalPopulation').textContent = country.population.toLocaleString();
+            document.getElementById('modalArea').textContent = country.area ? `${country.area.toLocaleString()} km²` : 'Unknown';
+            
+            // Calculate population density
+            const density = country.area && country.population ? 
+                Math.round(country.population / country.area) : 0;
+            document.getElementById('modalDensity').textContent = density ? 
+                `${density.toLocaleString()} people/km²` : 'Unknown';
+            
+            // Update languages
+            const languagesContainer = document.getElementById('modalLanguages');
+            languagesContainer.innerHTML = '';
+            
+            if (country.languages && Object.keys(country.languages).length > 0) {
+                const languages = Object.values(country.languages);
+                languages.forEach(language => {
+                    const tag = document.createElement('span');
+                    tag.className = 'language-tag';
+                    tag.textContent = language;
+                    languagesContainer.appendChild(tag);
+                });
+            } else {
+                languagesContainer.innerHTML = '<span class="language-tag">Unknown</span>';
+            }
+            
+            // Update currencies
+            const currenciesContainer = document.getElementById('modalCurrencies');
+            currenciesContainer.innerHTML = '';
+            
+            if (country.currencies && Object.keys(country.currencies).length > 0) {
+                Object.entries(country.currencies).forEach(([code, currency]) => {
+                    const tag = document.createElement('span');
+                    tag.className = 'currency-tag';
+                    tag.textContent = currency.symbol ? 
+                        `${currency.name} (${currency.symbol})` : 
+                        currency.name || code;
+                    currenciesContainer.appendChild(tag);
+                });
+            } else {
+                currenciesContainer.innerHTML = '<span class="currency-tag">Unknown</span>';
+            }
+            
+            // Show modal
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Prevent background scroll
         }
+        
+        // Close Country Modal
+        function closeModal() {
+            const modal = document.getElementById('countryModal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto'; // Restore scroll
+        }
+        
+        // Close modal when clicking outside
+        document.getElementById('countryModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+        
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
         
         // UI Helper Functions
         function hideLoading() {
